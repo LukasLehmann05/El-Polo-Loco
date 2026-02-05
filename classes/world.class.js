@@ -11,6 +11,15 @@ class World {
         new Cloud(),
     ]
 
+    backgrounds = [
+        new Background("../img/background/layers/1_first_layer/1.png"),
+        new Background("../img/background/layers/1_first_layer/2.png"),
+        new Background("../img/background/layers/2_second_layer/1.png"),
+        new Background("../img/background/layers/2_second_layer/2.png"),
+        new Background("../img/background/layers/3_third_layer/1.png"),
+        new Background("../img/background/layers/3_third_layer/2.png"),
+    ]
+
     canvas
     ctx
 
@@ -22,18 +31,25 @@ class World {
 
     createWorld() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.ctx.drawImage(this.character.img, this.character.pos_x, this.character.pos_y, this.character.width, this.character.height)
-
-        this.enemies.forEach(enemy => {
-            this.ctx.drawImage(enemy.img, enemy.pos_x, enemy.pos_y, enemy.width, enemy.height)
-        })
-
-        this.clouds.forEach(cloud => {
-            this.ctx.drawImage(cloud.img, cloud.pos_x, cloud.pos_y, cloud.width, cloud.height)
-        })
+        
+        this.addToMap(this.character)
+        this.addObjectsToMap(this.backgrounds)
+        this.addObjectsToMap(this.enemies)
+        this.addObjectsToMap(this.clouds)
 
         requestAnimationFrame(function () {
             this.createWorld()
         }.bind(this))
+    }
+
+    addObjectsToMap(objects) {
+        objects.forEach(object => {
+            this.addToMap(object)
+        })
+
+    }
+
+    addToMap(objectToAdd) {
+        this.ctx.drawImage(objectToAdd.img, objectToAdd.pos_x, objectToAdd.pos_y, objectToAdd.width, objectToAdd.height)
     }
 }
