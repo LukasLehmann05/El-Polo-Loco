@@ -1,0 +1,11 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-canvas {
+    height: 720px;
+    width: 1280px;
+    background-color: black;
+}
