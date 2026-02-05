@@ -6,6 +6,11 @@ class World {
         new Chicken(),
     ]
 
+    clouds = [
+        new Cloud(),
+        new Cloud(),
+    ]
+
     canvas
     ctx
 
@@ -23,7 +28,11 @@ class World {
             this.ctx.drawImage(enemy.img, enemy.pos_x, enemy.pos_y, enemy.width, enemy.height)
         })
 
-        requestAnimationFrame(function() {
+        this.clouds.forEach(cloud => {
+            this.ctx.drawImage(cloud.img, cloud.pos_x, cloud.pos_y, cloud.width, cloud.height)
+        })
+
+        requestAnimationFrame(function () {
             this.createWorld()
         }.bind(this))
     }
