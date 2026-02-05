@@ -1,10 +1,10 @@
 class Moveable_object {
-    pos_x = 10
-    pos_y = 10
+    pos_x = 120
+    pos_y = 500
     img
 
-    height = 50
-    width = 50
+    height = 150
+    width = 100
 
     constructor() {
         
