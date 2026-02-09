@@ -4,6 +4,7 @@ class Moveable_object {
     img
     height = 150
     width = 100
+    speed = 0.15
 
     currentImage = 0
 
@@ -26,8 +27,10 @@ class Moveable_object {
         })
     }
 
-    moveLeft() {
-        log('moving left')
+    moveLeft(speed,target_fps) {
+        setInterval(() => {
+            this.pos_x -= speed
+        }, target_fps)
     }
 
     moveRight() {
