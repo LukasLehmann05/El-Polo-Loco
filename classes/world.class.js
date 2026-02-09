@@ -12,12 +12,12 @@ class World {
     ]
 
     backgrounds = [
-        new Background("../img/background/layers/1_first_layer/1.png"),
-        new Background("../img/background/layers/1_first_layer/2.png"),
-        new Background("../img/background/layers/2_second_layer/1.png"),
-        new Background("../img/background/layers/2_second_layer/2.png"),
         new Background("../img/background/layers/3_third_layer/1.png"),
         new Background("../img/background/layers/3_third_layer/2.png"),
+        new Background("../img/background/layers/2_second_layer/1.png"),
+        new Background("../img/background/layers/2_second_layer/2.png"),
+        new Background("../img/background/layers/1_first_layer/1.png"),
+        new Background("../img/background/layers/1_first_layer/2.png"),
     ]
 
     canvas
@@ -31,11 +31,11 @@ class World {
 
     createWorld() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        
-        this.addToMap(this.character)
+
         this.addObjectsToMap(this.backgrounds)
-        this.addObjectsToMap(this.enemies)
         this.addObjectsToMap(this.clouds)
+        this.addObjectsToMap(this.enemies)
+        this.addToMap(this.character)
 
         requestAnimationFrame(function () {
             this.createWorld()
