@@ -7,5 +7,12 @@ class Cloud extends Moveable_object {
 
         this.pos_y = 50 + Math.random() * 50
         this.pos_x = Math.random() * 700
+        this.moveCloud()
+    }
+
+    moveCloud() {
+        setInterval(() => {
+            this.pos_x -= 0.175
+        }, 1000/ 60)
     }
 }

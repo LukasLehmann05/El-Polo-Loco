@@ -6,6 +6,8 @@ class Moveable_object {
     height = 150
     width = 100
 
+    imageCache = {}
+
     constructor() {
         
     }
@@ -13,6 +15,14 @@ class Moveable_object {
     loadImage(path) {
         this.img = new Image()
         this.img.src = path
+    }
+
+    loadImages(img_array) {
+        img_array.forEach((path) => {
+            let img = new Image()
+            img.src = path
+            this.imageCache[path] = img
+        })
     }
 
     moveLeft() {
