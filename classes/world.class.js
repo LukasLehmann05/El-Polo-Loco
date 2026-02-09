@@ -12,12 +12,13 @@ class World {
     ]
 
     backgrounds = [
+        new Background("../img/background/layers/air.png"),
         new Background("../img/background/layers/3_third_layer/1.png"),
-        new Background("../img/background/layers/3_third_layer/2.png"),
+        //new Background("../img/background/layers/3_third_layer/2.png"),
         new Background("../img/background/layers/2_second_layer/1.png"),
-        new Background("../img/background/layers/2_second_layer/2.png"),
+        //new Background("../img/background/layers/2_second_layer/2.png"),
         new Background("../img/background/layers/1_first_layer/1.png"),
-        new Background("../img/background/layers/1_first_layer/2.png"),
+        //new Background("../img/background/layers/1_first_layer/2.png"),
     ]
 
     canvas

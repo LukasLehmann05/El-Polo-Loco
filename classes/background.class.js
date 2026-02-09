@@ -4,7 +4,7 @@ class Background extends Moveable_object{
     pos_y = 240
 
     width = 1280
-    height = 480
+    height = 720
 
     constructor(img_path){
         super().loadImage(img_path)
