@@ -11,15 +11,15 @@ function init() {
     canvas.width = canvas_width
     canvas.height = canvas_height
 
-    world = new World(canvas)
+    world = new World(canvas, controls)
 }
 
 window.addEventListener("keydown", (event) => {
-    let key = event.key.toUpperCase()
-    new Controls(key, true)
+    let key = event.code.replace("Key", "").toUpperCase()
+    controls.handleKey(key, true)
 })
 
 window.addEventListener("keyup", (event) => {
-    let key = event.key.toUpperCase()
-    new Controls(key, false)
+    let key = event.code.replace("Key", "").toUpperCase()
+    controls.handleKey(key, false)
 })

@@ -4,6 +4,8 @@ class Character extends Moveable_object {
     width = 250
     pos_y = 260
 
+    speed = 10
+
     WALKING_SEQUENCE = [
         "../img/pepe/2_walk/W-21.png",
         "../img/pepe/2_walk/W-22.png",
@@ -21,16 +23,25 @@ class Character extends Moveable_object {
 
     animate() {
         setInterval(() => {
-            let i = this.currentImage % this.WALKING_SEQUENCE.length
-            this.currentImage = i
-            let path = this.WALKING_SEQUENCE[this.currentImage]
-            this.img = this.imageCache[path]
-            this.currentImage++
+            if (this.world.controls.MOVE_LEFT) {
+                this.moveAnimation()
+                this.pos_x -= this.speed
+            } else if (this.world.controls.MOVE_RIGHT) {
+                this.moveAnimation()
+                this.pos_x += this.speed
+            }
+        }, 1000 / 20)
+    }
 
-        },1000 / 8)
+    moveAnimation() {
+        let i = this.currentImage % this.WALKING_SEQUENCE.length
+        this.currentImage = i
+        let path = this.WALKING_SEQUENCE[this.currentImage]
+        this.img = this.imageCache[path]
+        this.currentImage++
     }
 
     jump() {
 
-        }
+    }
 }

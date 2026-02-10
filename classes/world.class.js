@@ -23,11 +23,15 @@ class World {
 
     canvas
     ctx
+    controls
+    world
 
-    constructor(canvas) {
+    constructor(canvas, controls) {
         this.ctx = canvas.getContext("2d")
         this.canvas = canvas
+        this.controls = controls
         this.createWorld()
+        this.setWorld()
     }
 
     createWorld() {
@@ -41,6 +45,10 @@ class World {
         requestAnimationFrame(function () {
             this.createWorld()
         }.bind(this))
+    }
+
+    setWorld() {
+        this.character.world = this
     }
 
     addObjectsToMap(objects) {

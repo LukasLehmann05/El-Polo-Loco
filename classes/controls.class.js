@@ -1,18 +1,21 @@
-MOVE_LEFT = false
-MOVE_RIGHT = false
-JUMP = false
-
 class Controls {
-    constructor(key, pressed) {
+    MOVE_LEFT = false
+    MOVE_RIGHT = false
+    JUMP = false
+
+    constructor() {
+    }
+
+    handleKey(key, pressed) {
         switch (key) {
             case "D":
-                MOVE_RIGHT = pressed
+                this.MOVE_RIGHT = pressed
                 break
             case "A":
-                MOVE_LEFT = pressed
+                this.MOVE_LEFT = pressed
                 break
-            case " ":
-                JUMP = pressed
+            case "SPACE":
+                this.JUMP = pressed
                 break
         }
     }
