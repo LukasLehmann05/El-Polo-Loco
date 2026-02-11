@@ -12,19 +12,25 @@ class World {
     ]
 
     backgrounds = [
-        new Background("../img/background/layers/air.png"),
-        new Background("../img/background/layers/3_third_layer/1.png"),
-        //new Background("../img/background/layers/3_third_layer/2.png"),
-        new Background("../img/background/layers/2_second_layer/1.png"),
-        //new Background("../img/background/layers/2_second_layer/2.png"),
-        new Background("../img/background/layers/1_first_layer/1.png"),
-        //new Background("../img/background/layers/1_first_layer/2.png"),
+        new Background("../img/background/layers/air.png", 0),
+        new Background("../img/background/layers/air.png", 1280),
+        new Background("../img/background/layers/air.png", -1280),
+        new Background("../img/background/layers/3_third_layer/1.png", 0),
+        new Background("../img/background/layers/3_third_layer/2.png", 1280),
+        new Background("../img/background/layers/3_third_layer/2.png", -1280),
+        new Background("../img/background/layers/2_second_layer/1.png", 0),
+        new Background("../img/background/layers/2_second_layer/2.png", 1280),
+        new Background("../img/background/layers/2_second_layer/2.png", -1280),
+        new Background("../img/background/layers/1_first_layer/1.png", 0),
+        new Background("../img/background/layers/1_first_layer/2.png", 1280),
+        new Background("../img/background/layers/1_first_layer/2.png", -1280),
     ]
 
     canvas
     ctx
     controls
     world
+    camera_x = 0
 
     constructor(canvas, controls) {
         this.ctx = canvas.getContext("2d")
@@ -36,11 +42,14 @@ class World {
 
     createWorld() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+        this.ctx.translate(this.camera_x, 0)
 
         this.addObjectsToMap(this.backgrounds)
         this.addObjectsToMap(this.clouds)
         this.addObjectsToMap(this.enemies)
         this.addToMap(this.character)
+
+        this.ctx.translate(-this.camera_x, 0)
 
         requestAnimationFrame(function () {
             this.createWorld()

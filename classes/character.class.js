@@ -32,7 +32,8 @@ class Character extends Moveable_object {
                 this.pos_x += this.speed
                 this.mirrorImage = false
             }
-        }, 1000 / 20)
+            this.world.camera_x = -this.pos_x
+        }, 1000 / 60)
     }
 
     moveAnimation() {
