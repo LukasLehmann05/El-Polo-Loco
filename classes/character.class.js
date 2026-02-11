@@ -26,9 +26,11 @@ class Character extends Moveable_object {
             if (this.world.controls.MOVE_LEFT) {
                 this.moveAnimation()
                 this.pos_x -= this.speed
+                this.mirrorImage = true
             } else if (this.world.controls.MOVE_RIGHT) {
                 this.moveAnimation()
                 this.pos_x += this.speed
+                this.mirrorImage = false
             }
         }, 1000 / 20)
     }

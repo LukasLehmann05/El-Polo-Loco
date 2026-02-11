@@ -5,6 +5,7 @@ class Moveable_object {
     height = 150
     width = 100
     speed = 0.15
+    mirrorImage = false
 
     currentImage = 0
 

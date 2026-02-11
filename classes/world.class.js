@@ -59,6 +59,18 @@ class World {
     }
 
     addToMap(objectToAdd) {
-        this.ctx.drawImage(objectToAdd.img, objectToAdd.pos_x, objectToAdd.pos_y, objectToAdd.width, objectToAdd.height)
+        this.ctx.save()
+        if (objectToAdd.mirrorImage) {
+            this.ctx.translate(objectToAdd.pos_x + objectToAdd.width, 0)
+            this.ctx.scale(-1, 1)
+        }
+        this.ctx.drawImage(
+            objectToAdd.img,
+            objectToAdd.mirrorImage ? 0 : objectToAdd.pos_x,
+            objectToAdd.pos_y,
+            objectToAdd.width,
+            objectToAdd.height
+        )
+        this.ctx.restore()
     }
 }
