@@ -3,8 +3,10 @@ class Character extends Moveable_object {
     height = 400
     width = 250
     pos_y = 260
-
     speed = 10
+    character_offet_right = 200
+    limit_left = -1080
+    limit_right = 1480
 
     WALKING_SEQUENCE = [
         "../img/pepe/2_walk/W-21.png",
@@ -22,16 +24,20 @@ class Character extends Moveable_object {
 
     animate() {
         setInterval(() => {
-            if (this.world.controls.MOVE_LEFT) {
-                this.moveAnimation()
+                if (this.world.controls.MOVE_LEFT || this.world.controls.MOVE_RIGHT) {
+                    this.moveAnimation()
+                }
+        }, 1000 / 20)
+
+        setInterval(() => {
+            if (this.world.controls.MOVE_LEFT && this.pos_x > this.limit_left) {
                 this.pos_x -= this.speed
                 this.mirrorImage = true
-            } else if (this.world.controls.MOVE_RIGHT) {
-                this.moveAnimation()
+            } else if (this.world.controls.MOVE_RIGHT && this.pos_x < this.limit_right) {
                 this.pos_x += this.speed
                 this.mirrorImage = false
             }
-            this.world.camera_x = -this.pos_x
+            this.world.camera_x = -this.pos_x + this.character_offet_right
         }, 1000 / 60)
     }
 
