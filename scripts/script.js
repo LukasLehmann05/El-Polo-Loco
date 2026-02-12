@@ -1,8 +1,8 @@
+const canvas_width = 1280
+const canvas_height = 720
+
 let canvas = document.getElementById("game_canvas")
 let world
-
-let canvas_width = 1280
-let canvas_height = 720
 
 let controls = new Controls()
 
