@@ -5,6 +5,7 @@ class Moveable_object {
     height = 150
     width = 100
     speed = 0.15
+    animationFPS = 1000/6
     mirrorImage = false
 
     currentImage = 0
@@ -36,5 +37,18 @@ class Moveable_object {
 
     moveRight() {
         log('moving right')
+    }
+
+    animate(speed, target_fps, WALKING_SEQUENCE, animationFPS) {
+        this.moveLeft(speed,target_fps)
+
+        setInterval(() => {
+            let i = this.currentImage % WALKING_SEQUENCE.length
+            this.currentImage = i
+            let path = WALKING_SEQUENCE[this.currentImage]
+            this.img = this.imageCache[path]
+            this.currentImage++
+
+        },animationFPS)
     }
 }

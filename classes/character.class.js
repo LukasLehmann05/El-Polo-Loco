@@ -30,6 +30,11 @@ class Character extends Moveable_object {
         }, 1000 / 20)
 
         setInterval(() => {
+            this.moveCharacter()
+        }, 1000 / 60)
+    }
+
+    moveCharacter() {
             if (this.world.controls.MOVE_LEFT && this.pos_x > this.limit_left) {
                 this.pos_x -= this.speed
                 this.mirrorImage = true
@@ -38,7 +43,6 @@ class Character extends Moveable_object {
                 this.mirrorImage = false
             }
             this.world.camera_x = -this.pos_x + this.character_offet_right
-        }, 1000 / 60)
     }
 
     moveAnimation() {
