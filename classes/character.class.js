@@ -7,6 +7,9 @@ class Character extends Moveable_object {
     character_offet_right = 200
     limit_left = -1080
     limit_right = 1480
+    acceleration = -0.5
+    jump_speed = 15
+    vertical_speed = 0
 
     WALKING_SEQUENCE = [
         "../img/pepe/2_walk/W-21.png",
@@ -20,29 +23,45 @@ class Character extends Moveable_object {
     constructor() {
         super().loadImage("../img/pepe/1_idle/idle/I-1.png")
         this.loadImages(this.WALKING_SEQUENCE)
+        this.gravity()
     }
 
     animate() {
         setInterval(() => {
-                if (this.world.controls.MOVE_LEFT || this.world.controls.MOVE_RIGHT) {
-                    this.moveAnimation()
-                }
+            if (this.world.controls.MOVE_LEFT || this.world.controls.MOVE_RIGHT) {
+                this.moveAnimation()
+            }
         }, 1000 / 20)
 
         setInterval(() => {
             this.moveCharacter()
+            this.jump()
+        }, 1000 / 60)
+    }
+
+    gravity() {
+        setInterval(() => {
+            if (!this.vertical_speed == 0 || this.pos_y < 260) {
+                this.pos_y += this.vertical_speed
+                this.vertical_speed -= this.acceleration
+            }
+
+            if (this.pos_y > 260) {
+                this.pos_y = 260
+                this.vertical_speed = 0
+            }
         }, 1000 / 60)
     }
 
     moveCharacter() {
-            if (this.world.controls.MOVE_LEFT && this.pos_x > this.limit_left) {
-                this.pos_x -= this.speed
-                this.mirrorImage = true
-            } else if (this.world.controls.MOVE_RIGHT && this.pos_x < this.limit_right) {
-                this.pos_x += this.speed
-                this.mirrorImage = false
-            }
-            this.world.camera_x = -this.pos_x + this.character_offet_right
+        if (this.world.controls.MOVE_LEFT && this.pos_x > this.limit_left) {
+            this.pos_x -= this.speed
+            this.mirrorImage = true
+        } else if (this.world.controls.MOVE_RIGHT && this.pos_x < this.limit_right) {
+            this.pos_x += this.speed
+            this.mirrorImage = false
+        }
+        this.world.camera_x = -this.pos_x + this.character_offet_right
     }
 
     moveAnimation() {
@@ -54,6 +73,8 @@ class Character extends Moveable_object {
     }
 
     jump() {
-
+        if (this.world.controls.JUMP && this.vertical_speed == 0) {
+            this.vertical_speed = -this.jump_speed
+        }
     }
 }
