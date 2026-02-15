@@ -5,7 +5,7 @@ class Moveable_object {
     height = 150
     width = 100
     speed = 0.15
-    animationFPS = 1000/6
+    animationFPS = 1000 / 6
     mirrorImage = false
 
     currentImage = 0
@@ -13,7 +13,7 @@ class Moveable_object {
     imageCache = {}
 
     constructor() {
-        
+
     }
 
     loadImage(path) {
@@ -29,7 +29,7 @@ class Moveable_object {
         })
     }
 
-    moveLeft(speed,target_fps) {
+    moveLeft(speed, target_fps) {
         setInterval(() => {
             this.pos_x -= speed
         }, target_fps)
@@ -40,7 +40,7 @@ class Moveable_object {
     }
 
     animate(speed, target_fps, WALKING_SEQUENCE, animationFPS) {
-        this.moveLeft(speed,target_fps)
+        this.moveLeft(speed, target_fps)
 
         setInterval(() => {
             let i = this.currentImage % WALKING_SEQUENCE.length
@@ -49,6 +49,13 @@ class Moveable_object {
             this.img = this.imageCache[path]
             this.currentImage++
 
-        },animationFPS)
+        }, animationFPS)
+    }
+
+    isColliding(objectToCheck) {
+        return this.pos_x + this.width > objectToCheck.pos_x &&
+            this.pos_y + this.height > objectToCheck.pos_y &&
+            this.pos_x < objectToCheck.pos_x + objectToCheck.width &&
+            this.pos_y < objectToCheck.pos_y + objectToCheck.height
     }
 }

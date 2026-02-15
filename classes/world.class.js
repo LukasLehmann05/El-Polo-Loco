@@ -7,17 +7,18 @@ class World {
     world
     camera_x = 0
 
+    enemies = level1.enemies
+    clouds = level1.clouds
+    backgrounds = level1.backgrounds
+
     constructor(canvas, controls) {
         this.ctx = canvas.getContext("2d")
         this.canvas = canvas
         this.controls = controls
         this.createWorld()
         this.setWorld()
+        this.checkForCollision()
     }
-
-    enemies = level1.enemies
-    clouds = level1.clouds
-    backgrounds = level1.backgrounds
 
     createWorld() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
@@ -34,6 +35,18 @@ class World {
             this.createWorld()
         }.bind(this))
     }
+
+    checkForCollision() {
+        setInterval(() => {
+            this.enemies.forEach((enemy) => {
+                if (this.character.isColliding(enemy)) {
+                    console.log("Collision detected with enemy!")
+                }
+            }
+            )
+        }, 1000 / 10);
+    }
+
 
     setWorld() {
         this.character.world = this
