@@ -53,13 +53,19 @@ class World {
             this.ctx.translate(objectToAdd.pos_x + objectToAdd.width, 0)
             this.ctx.scale(-1, 1)
         }
-        this.ctx.drawImage(
-            objectToAdd.img,
-            objectToAdd.mirrorImage ? 0 : objectToAdd.pos_x,
-            objectToAdd.pos_y,
-            objectToAdd.width,
-            objectToAdd.height
-        )
+        const drawX = objectToAdd.mirrorImage ? 0 : objectToAdd.pos_x
+        this.ctx.drawImage(objectToAdd.img, drawX, objectToAdd.pos_y, objectToAdd.width, objectToAdd.height)
+        this.addCollisionBox(objectToAdd, drawX)
         this.ctx.restore()
+    }
+
+    addCollisionBox(objectToAdd, drawX = objectToAdd.pos_x) {
+        if (objectToAdd instanceof Character || objectToAdd instanceof Endboss || objectToAdd instanceof Chicken) {
+            this.ctx.beginPath()
+            this.ctx.lineWidth = "1"
+            this.ctx.strokeStyle = "red"
+            this.ctx.rect(drawX, objectToAdd.pos_y, objectToAdd.width, objectToAdd.height)
+            this.ctx.stroke()
+        }
     }
 }
