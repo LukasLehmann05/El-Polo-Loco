@@ -35,10 +35,6 @@ class Moveable_object {
         }, target_fps)
     }
 
-    moveRight() {
-        log('moving right')
-    }
-
     animate(speed, target_fps, WALKING_SEQUENCE, animationFPS) {
         this.moveLeft(speed, target_fps)
 

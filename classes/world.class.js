@@ -10,6 +10,7 @@ class World {
     enemies = level1.enemies
     clouds = level1.clouds
     backgrounds = level1.backgrounds
+    lastHit = 0
 
     constructor(canvas, controls) {
         this.ctx = canvas.getContext("2d")
@@ -40,13 +41,27 @@ class World {
         setInterval(() => {
             this.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
-                    console.log("Collision detected with enemy!")
+                    this.damageCharacter()
                 }
             }
             )
-        }, 1000 / 10);
+        }, 1000 / 1);
     }
 
+    damageCharacter() {
+        if (this.character.health > 0) {
+            this.character.health -= this.character.damage
+            this.lastHit = new Date().getTime()
+        }
+        this.characterDied()
+    }
+
+    characterDied() {
+        if (this.character.health <= 0) {
+            this.character.died = true
+            return true
+        }
+    }
 
     setWorld() {
         this.character.world = this
@@ -58,6 +73,12 @@ class World {
             this.addToMap(object)
         })
 
+    }
+
+    checkForCooldown() {
+        let timepassed = new Date().getTime() - this.lastHit
+        timepassed = timepassed / 1000
+        return timepassed < 0.2 
     }
 
     addToMap(objectToAdd) {
