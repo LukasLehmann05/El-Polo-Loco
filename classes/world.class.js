@@ -32,9 +32,13 @@ class World {
         this.addObjectsToMap(this.backgrounds)
         this.addObjectsToMap(this.clouds)
         this.addObjectsToMap(this.enemies)
+
+        this.ctx.translate(-this.camera_x, 0)
         this.addToMap(this.bottle_bar)
         this.addToMap(this.health_bar)
         this.addToMap(this.coin_bar)
+        this.ctx.translate(this.camera_x, 0)
+
         this.addToMap(this.character)
 
         this.ctx.translate(-this.camera_x, 0)

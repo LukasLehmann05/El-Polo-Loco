@@ -7,7 +7,7 @@ class StatusBar extends DrawableObject {
 
     array_index = 0
 
-    pos_x = -50
+    pos_x = 30
     pos_y = 10
     width = 300
     height = 80
