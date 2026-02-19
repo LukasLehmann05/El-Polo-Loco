@@ -13,8 +13,6 @@ class Character extends Moveable_object {
     jump_speed = 15
     vertical_speed = 0
 
-    health = 100
-    damage = 10
     died = false
 
     WALKING_SEQUENCE = [

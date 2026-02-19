@@ -1,5 +1,9 @@
 class World {
     character = new Character()
+    drawableObject = new DrawableObject()
+    health_bar = new HealthBar()
+    bottle_bar = new BottleBar()
+    coin_bar = new CoinBar()
 
     canvas
     ctx
@@ -28,6 +32,9 @@ class World {
         this.addObjectsToMap(this.backgrounds)
         this.addObjectsToMap(this.clouds)
         this.addObjectsToMap(this.enemies)
+        this.addToMap(this.bottle_bar)
+        this.addToMap(this.health_bar)
+        this.addToMap(this.coin_bar)
         this.addToMap(this.character)
 
         this.ctx.translate(-this.camera_x, 0)
@@ -49,15 +56,16 @@ class World {
     }
 
     damageCharacter() {
-        if (this.character.health > 0) {
-            this.character.health -= this.character.damage
+        if (this.drawableObject.health > 0) {
+            this.drawableObject.health -= this.drawableObject.damage
             this.lastHit = new Date().getTime()
         }
+        this.health_bar.updateHealthBar(this.drawableObject.health)
         this.characterDied()
     }
 
     characterDied() {
-        if (this.character.health <= 0) {
+        if (this.drawableObject.health <= 0) {
             this.character.died = true
             return true
         }
@@ -65,6 +73,7 @@ class World {
 
     setWorld() {
         this.character.world = this
+        this.drawableObject.world = this
         this.character.animate()
     }
 
@@ -78,7 +87,7 @@ class World {
     checkForCooldown() {
         let timepassed = new Date().getTime() - this.lastHit
         timepassed = timepassed / 1000
-        return timepassed < 0.2 
+        return timepassed < 0.2
     }
 
     addToMap(objectToAdd) {
