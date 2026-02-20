@@ -58,6 +58,20 @@ class Moveable_object extends DrawableObject {
         }, 1000 / 60)
     }
 
+    gravityBottle() {
+        setInterval(() => {
+            if (!this.vertical_speed == 0 || this.pos_y < this.base_y) {
+                this.pos_y += this.vertical_speed
+                this.vertical_speed -= this.acceleration
+            }
+
+            if (this.pos_y > this.base_y) {
+                this.pos_y = this.base_y
+                this.vertical_speed = 0
+            }
+        }, 1000 / 60)
+    }
+
     isColliding(objectToCheck) {
         return this.pos_x + this.width > objectToCheck.pos_x &&
             this.pos_y + this.height > objectToCheck.pos_y &&
