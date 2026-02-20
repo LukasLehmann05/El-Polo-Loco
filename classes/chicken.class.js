@@ -16,6 +16,6 @@ class Chicken extends Moveable_object {
         this.pos_x = 300 + Math.random() * 700
         this.speed = 2 + Math.random() * 0.35
         this.loadImages(this.WALKING_SEQUENCE)
-        this.animate(this.speed, this.target_fps, this.WALKING_SEQUENCE, this.animationFPS)
+        this.animate(this.speed, this.target_fps, this.WALKING_SEQUENCE, this.animationFPS, "left")
     }
 }
