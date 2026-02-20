@@ -82,20 +82,10 @@ class Character extends Moveable_object {
         } else if (this.world.checkForCooldown()) {
             this.playAnimation(this.HURT_SEQUENCE)
         }
-    }
 
-    gravity() {
-        setInterval(() => {
-            if (!this.vertical_speed == 0 || this.pos_y < this.character_base_y) {
-                this.pos_y += this.vertical_speed
-                this.vertical_speed -= this.acceleration
-            }
-
-            if (this.pos_y > this.character_base_y) {
-                this.pos_y = this.character_base_y
-                this.vertical_speed = 0
-            }
-        }, 1000 / 60)
+        if (this.world.controls.THROW) {
+            this.world.throwBottle(this.mirrorImage, this.pos_x, this.pos_y)
+        }
     }
 
     moveCharacter() {
@@ -107,14 +97,6 @@ class Character extends Moveable_object {
             this.mirrorImage = false
         }
         this.world.camera_x = -this.pos_x + this.character_offet_right
-    }
-
-    playAnimation(sequence) {
-        let i = this.currentImage % sequence.length
-        this.currentImage = i
-        let path = sequence[this.currentImage]
-        this.img = this.imageCache[path]
-        this.currentImage++
     }
 
     jump() {

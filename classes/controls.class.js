@@ -2,6 +2,7 @@ class Controls {
     MOVE_LEFT = false
     MOVE_RIGHT = false
     JUMP = false
+    THROW = false
 
     constructor() {
     }
@@ -16,6 +17,9 @@ class Controls {
                 break
             case "SPACE":
                 this.JUMP = pressed
+                break
+            case "F":
+                this.THROW = pressed
                 break
         }
     }

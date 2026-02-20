@@ -5,13 +5,14 @@ let canvas = document.getElementById("game_canvas")
 let world
 
 let controls = new Controls()
+let throwableObject = new Throwable_Object()
 
 function init() {
 
     canvas.width = canvas_width
     canvas.height = canvas_height
 
-    world = new World(canvas, controls)
+    world = new World(canvas, controls, throwableObject)
 }
 
 window.addEventListener("keydown", (event) => {

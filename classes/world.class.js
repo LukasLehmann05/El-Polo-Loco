@@ -4,6 +4,8 @@ class World {
     health_bar = new HealthBar()
     bottle_bar = new BottleBar()
     coin_bar = new CoinBar()
+    throwableObject = new Throwable_Object()
+    throwableObjects = []
 
     canvas
     ctx
@@ -32,7 +34,7 @@ class World {
         this.addObjectsToMap(this.backgrounds)
         this.addObjectsToMap(this.clouds)
         this.addObjectsToMap(this.enemies)
-
+        this.addObjectsToMap(this.throwableObjects)
         this.ctx.translate(-this.camera_x, 0)
         this.addToMap(this.bottle_bar)
         this.addToMap(this.health_bar)
@@ -92,6 +94,15 @@ class World {
         let timepassed = new Date().getTime() - this.lastHit
         timepassed = timepassed / 1000
         return timepassed < 0.2
+    }
+
+    throwBottle(mirrorImage, pos_x, pos_y) {
+        if (!this.throwableObject.checkThrowCooldown()) {
+            const newBottle = new Throwable_Object()
+            newBottle.throwBottle(mirrorImage, pos_x, pos_y)
+            this.throwableObjects.push(newBottle)
+            this.throwableObject.last_throw = new Date().getTime()
+        }
     }
 
     addToMap(objectToAdd) {

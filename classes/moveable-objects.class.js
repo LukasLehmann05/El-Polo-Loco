@@ -36,6 +36,14 @@ class Moveable_object extends DrawableObject {
         }, animationFPS)
     }
 
+    playAnimation(sequence) {
+        let i = this.currentImage % sequence.length
+        this.currentImage = i
+        let path = sequence[this.currentImage]
+        this.img = this.imageCache[path]
+        this.currentImage++
+    }
+
     gravity() {
         setInterval(() => {
             if (!this.vertical_speed == 0 || this.pos_y < this.character_base_y) {

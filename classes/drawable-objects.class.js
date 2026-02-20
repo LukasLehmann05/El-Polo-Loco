@@ -1,4 +1,4 @@
-class DrawableObject {
+class DrawableObject{
     pos_x = 120
     pos_y = 500
     img
