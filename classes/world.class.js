@@ -106,6 +106,9 @@ class World {
     }
 
     addToMap(objectToAdd) {
+        if (objectToAdd.visible === false) {
+            return
+        }
         this.ctx.save()
         if (objectToAdd.mirrorImage) {
             this.ctx.translate(objectToAdd.pos_x + objectToAdd.width, 0)

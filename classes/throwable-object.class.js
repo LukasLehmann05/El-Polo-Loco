@@ -7,6 +7,8 @@ class Throwable_Object extends Moveable_object {
     base_y = 530
     last_throw = new Date().getTime()
     target_fps = 1000 / 60
+    bottle_status = true
+    visible = true
 
     BOTTLE_THROW_SEQUENCE = [
         "../img/salsa_bottle/bottle_rotation/1_bottle_rotation.png",
@@ -37,16 +39,60 @@ class Throwable_Object extends Moveable_object {
     }
 
     throwBottle(mirrorImage, pos_x, pos_y) {
+        this.visible = true
         this.pos_x = pos_x + (mirrorImage ? 50 : 100)
         this.pos_y = pos_y + 150
         this.vertical_speed = -this.throw_height
-        this.gravityBottle()
 
         if (!mirrorImage) {
-            this.animate(this.speed, this.target_fps, this.BOTTLE_THROW_SEQUENCE, this.animationFPS, "right")
+            this.moveRight(this.speed, this.target_fps)
         } else {
-            this.animate(this.speed, this.target_fps, this.BOTTLE_THROW_SEQUENCE, this.animationFPS, "left")
+            this.moveLeft(this.speed, this.target_fps)
         }
+
+        this.gravityBottle()
+        this.animateThrow(this.BOTTLE_THROW_SEQUENCE)
+    }
+
+    animateThrow(sequence) {
+        setInterval(() => {
+            if (this.bottle_status) {
+                this.playAnimation(sequence)
+            }
+        }, this.animationFPS)
+    }
+
+    animateSplash(sequence) {
+        let counter = 0
+        let splash = setInterval(() => {
+            this.playAnimation(sequence)
+            counter++
+            if (counter >= sequence.length) {
+                clearInterval(splash)
+                this.visible = false
+            }
+        }, this.animationFPS)
+    }
+    moveRight(speed, target_fps) {
+        setInterval(() => {
+            if (this.bottle_status) {
+                this.pos_x += speed
+            }
+        }, target_fps)
+    }
+
+    moveLeft(speed, target_fps) {
+        setInterval(() => {
+            if (this.bottle_status) {
+                this.pos_x -= speed
+            }
+        }, target_fps)
+    }
+
+    bottle_splash() {
+        this.bottle_status = false
+        this.speed = 0
+        this.animateSplash(this.BOTTLE_SPLASH_SEQUENCE)
     }
 
 }

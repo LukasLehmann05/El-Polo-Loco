@@ -13,25 +13,11 @@ class Moveable_object extends DrawableObject {
         }, target_fps)
     }
 
-    moveRight(speed, target_fps) {
-        setInterval(() => {
-            this.pos_x += speed
-        }, target_fps)
-    }
-
     animate(speed, target_fps, WALKING_SEQUENCE, animationFPS, direction) {
-        if (direction === "left") {
-            this.moveLeft(speed, target_fps)
-        } else if (direction === "right") {
-            this.moveRight(speed, target_fps)
-        }
+        this.moveLeft(speed, target_fps)
 
         setInterval(() => {
-            let i = this.currentImage % WALKING_SEQUENCE.length
-            this.currentImage = i
-            let path = WALKING_SEQUENCE[this.currentImage]
-            this.img = this.imageCache[path]
-            this.currentImage++
+            this.playAnimation(WALKING_SEQUENCE)
 
         }, animationFPS)
     }
@@ -68,6 +54,7 @@ class Moveable_object extends DrawableObject {
             if (this.pos_y > this.base_y) {
                 this.pos_y = this.base_y
                 this.vertical_speed = 0
+                this.bottle_splash()
             }
         }, 1000 / 60)
     }
