@@ -96,6 +96,12 @@ class Character extends Moveable_object {
             this.pos_x += this.speed
             this.mirrorImage = false
         }
+
+        if (this.pos_x > 0 && this.world.boss_bar === false) {
+            this.world.boss_bar = true
+            this.world.AddSingleObjectToMap(new BossBar())
+        }
+
         this.world.camera_x = -this.pos_x + this.character_offet_right
     }
 

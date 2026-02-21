@@ -4,8 +4,10 @@ class World {
     health_bar = new HealthBar()
     bottle_bar = new BottleBar()
     coin_bar = new CoinBar()
+    boss_bar = false
     throwableObject = new Throwable_Object()
     throwableObjects = []
+    single_hud_object = []
 
     canvas
     ctx
@@ -24,6 +26,7 @@ class World {
     current_bottles = this.max_bottles
     max_coins = 5
     current_coins = 0
+    bottle_damage = 1
 
     constructor(canvas, controls) {
         this.ctx = canvas.getContext("2d")
@@ -43,10 +46,14 @@ class World {
         this.addObjectsToMap(this.enemies)
         this.addObjectsToMap(this.collectables)
         this.addObjectsToMap(this.throwableObjects)
+
         this.ctx.translate(-this.camera_x, 0)
         this.addToMap(this.bottle_bar)
         this.addToMap(this.health_bar)
         this.addToMap(this.coin_bar)
+        if (this.single_hud_object.length > 0) {
+            this.addObjectsToMap(this.single_hud_object)
+        }
         this.ctx.translate(this.camera_x, 0)
 
         this.addToMap(this.character)
@@ -56,6 +63,10 @@ class World {
         requestAnimationFrame(function () {
             this.createWorld()
         }.bind(this))
+    }
+
+    AddSingleObjectToMap(object) {
+        this.single_hud_object.push(object)
     }
 
     checkForCollision() {
@@ -87,6 +98,27 @@ class World {
                     }
                 }
             })
+
+            this.throwableObjects.forEach((bottle) => {
+                this.enemies.forEach((enemy) => {
+                    if (bottle.isColliding(enemy) && !enemy.died && enemy instanceof Endboss) {
+                        if (enemy.health > 0 && bottle.bottle_hit === false) {
+                            enemy.health -= this.bottle_damage
+                            bottle.bottle_hit = true
+                            if (this.single_hud_object[0] instanceof BossBar) {
+                                this.single_hud_object[0].updateBossBar(enemy.health)
+                            }
+                            
+                        }
+                        if (enemy.health <= 0) {
+                            enemy.died = true
+                            enemy.endbossDied()
+                        }
+                    }
+                })
+            })
+
+
         }, 1000 / 10);
     }
 
@@ -122,6 +154,7 @@ class World {
     setWorld() {
         this.character.world = this
         this.drawableObject.world = this
+        this.throwableObject.world = this
         this.character.animate()
     }
 

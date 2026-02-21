@@ -8,6 +8,7 @@ class Throwable_Object extends Moveable_object {
     last_throw = new Date().getTime()
     target_fps = 1000 / 60
     bottle_status = true
+    bottle_hit = false
     visible = true
     statusbar = new StatusBar()
 
