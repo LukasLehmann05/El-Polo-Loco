@@ -73,10 +73,10 @@ class Character extends Moveable_object {
     }
 
     selectAnimation() {
-        if (this.world.controls.MOVE_LEFT || this.world.controls.MOVE_RIGHT) {
-            this.playAnimation(this.WALKING_SEQUENCE)
-        } else if (this.world.controls.JUMP) {
+        if (this.world.controls.JUMP) {
             this.playAnimation(this.JUMPING_SEQUENCE)
+        } else if (this.world.controls.MOVE_LEFT || this.world.controls.MOVE_RIGHT) {
+            this.playAnimation(this.WALKING_SEQUENCE)
         } else if (this.died) {
             this.playAnimation(this.DIED_SEQUENCE)
         } else if (this.world.checkForCooldown()) {

@@ -20,6 +20,8 @@ class World {
 
     max_bottles = 5
     current_bottles = this.max_bottles
+    max_coins = 5
+    current_coins = 0
 
     constructor(canvas, controls) {
         this.ctx = canvas.getContext("2d")

@@ -11,7 +11,7 @@ class CoinBar extends StatusBar {
     pos_y = 65
 
     constructor() {
-        super().loadImage(this.COIN_BAR[5])
+        super().loadImage(this.COIN_BAR[0])
         this.loadImages(this.COIN_BAR)
     }
 }
