@@ -17,6 +17,7 @@ class World {
     clouds = level1.clouds
     backgrounds = level1.backgrounds
     lastHit = 0
+    damage_cooldown = 1
 
     max_bottles = 5
     current_bottles = this.max_bottles
@@ -59,19 +60,36 @@ class World {
         setInterval(() => {
             this.enemies.forEach((enemy) => {
                 if (this.character.isColliding(enemy)) {
-                    this.damageCharacter()
+                    if (enemy instanceof Chicken) {
+                        this.checkForJumpKill(enemy)
+                    } else {
+                        this.damageCharacter()
+                    }
                 }
             }
             )
-        }, 1000 / 1);
+        }, 1000 / 10);
+    }
+
+    checkForJumpKill(enemy) {
+        if (this.character.vertical_speed > 0 && !enemy.died) { //&& this.character.pos_y < enemy.pos_y
+            enemy.died = true
+            enemy.chickenDied()
+        } else if (!enemy.died) {
+            this.damageCharacter()
+        }
     }
 
     damageCharacter() {
-        if (this.drawableObject.health > 0) {
-            this.drawableObject.health -= this.drawableObject.damage
-            this.lastHit = new Date().getTime()
+        let new_hit = new Date().getTime()
+        let timepassed = (new_hit - this.lastHit) / 1000
+        if (timepassed > this.damage_cooldown) {
+            if (this.drawableObject.health > 0) {
+                this.drawableObject.health -= this.drawableObject.damage
+                this.lastHit = new Date().getTime()
+            }
+            this.health_bar.updateHealthBar(this.drawableObject.health)
         }
-        this.health_bar.updateHealthBar(this.drawableObject.health)
         this.characterDied()
     }
 

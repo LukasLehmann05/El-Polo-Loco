@@ -7,19 +7,10 @@ class Moveable_object extends DrawableObject {
         super()
     }
 
-    moveLeft(speed, target_fps) {
+    moveLeft(target_fps) {
         setInterval(() => {
-            this.pos_x -= speed
+            this.pos_x -= this.speed
         }, target_fps)
-    }
-
-    animate(speed, target_fps, WALKING_SEQUENCE, animationFPS, direction) {
-        this.moveLeft(speed, target_fps)
-
-        setInterval(() => {
-            this.playAnimation(WALKING_SEQUENCE)
-
-        }, animationFPS)
     }
 
     playAnimation(sequence) {
