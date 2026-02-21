@@ -12,4 +12,8 @@ class BottleBar extends StatusBar {
         super().loadImage(this.BOTTLE_BAR[5])
         this.loadImages(this.BOTTLE_BAR)
     }
+
+    updateBottleBar(bottles) {
+        this.setPercentage(bottles / this.max_bottles * 100, this.BOTTLE_BAR)
+    }
 }

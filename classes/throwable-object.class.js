@@ -9,6 +9,7 @@ class Throwable_Object extends Moveable_object {
     target_fps = 1000 / 60
     bottle_status = true
     visible = true
+    statusbar = new StatusBar()
 
     BOTTLE_THROW_SEQUENCE = [
         "../img/salsa_bottle/bottle_rotation/1_bottle_rotation.png",

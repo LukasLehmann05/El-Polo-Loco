@@ -18,6 +18,9 @@ class World {
     backgrounds = level1.backgrounds
     lastHit = 0
 
+    max_bottles = 5
+    current_bottles = this.max_bottles
+
     constructor(canvas, controls) {
         this.ctx = canvas.getContext("2d")
         this.canvas = canvas
@@ -97,11 +100,13 @@ class World {
     }
 
     throwBottle(mirrorImage, pos_x, pos_y) {
-        if (!this.throwableObject.checkThrowCooldown()) {
+        if (!this.throwableObject.checkThrowCooldown() && this.current_bottles > 0) {
             const newBottle = new Throwable_Object()
             newBottle.throwBottle(mirrorImage, pos_x, pos_y)
             this.throwableObjects.push(newBottle)
             this.throwableObject.last_throw = new Date().getTime()
+            this.current_bottles -= 1
+            this.bottle_bar.updateBottleBar(this.current_bottles)
         }
     }
 
