@@ -29,5 +29,13 @@ const level1 = new Level(
         new bottleCollectable(400),
         new bottleCollectable(800),
         new bottleCollectable(1200),
+        new coinCollectable(300),
+        new coinCollectable(500),
+        new coinCollectable(700),
+        new coinCollectable(900),
+        new coinCollectable(1100),
+        new coinCollectable(1300),
+        new coinCollectable(1700),
+        new coinCollectable(2100),
     ]
 )

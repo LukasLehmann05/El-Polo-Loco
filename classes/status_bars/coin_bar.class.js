@@ -14,4 +14,8 @@ class CoinBar extends StatusBar {
         super().loadImage(this.COIN_BAR[0])
         this.loadImages(this.COIN_BAR)
     }
+
+    updateCoinBar(coins) {
+        this.setPercentage(coins / this.max_coins * 100, this.COIN_BAR)
+    }
 }

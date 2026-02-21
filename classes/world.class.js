@@ -73,10 +73,16 @@ class World {
             this.collectables.forEach((collectable) => {
                 if (this.character.isColliding(collectable)) {
                     if (collectable instanceof bottleCollectable) {
-                        if (this.current_bottles < this.max_bottles) {
+                        if (this.current_bottles < this.max_bottles && !collectable.collected) {
                             collectable.hideBottle()
                             this.current_bottles += 1
                             this.bottle_bar.updateBottleBar(this.current_bottles)
+                        }
+                    } else if (collectable instanceof coinCollectable) {
+                        if (this.current_coins < this.max_coins && !collectable.collected) {
+                            collectable.hideCoin()
+                            this.current_coins += 1
+                            this.coin_bar.updateCoinBar(this.current_coins)
                         }
                     }
                 }
