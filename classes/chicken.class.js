@@ -35,8 +35,6 @@ class Chicken extends Moveable_object {
     }
 
     chickenDied() {
-        console.log("chicken died");
-        this.speed = 0
-        
+        this.speed = 0 
     }
 }
