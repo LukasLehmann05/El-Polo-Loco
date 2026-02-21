@@ -16,6 +16,7 @@ class World {
     enemies = level1.enemies
     clouds = level1.clouds
     backgrounds = level1.backgrounds
+    collectables = level1.collectables
     lastHit = 0
     damage_cooldown = 1
 
@@ -40,6 +41,7 @@ class World {
         this.addObjectsToMap(this.backgrounds)
         this.addObjectsToMap(this.clouds)
         this.addObjectsToMap(this.enemies)
+        this.addObjectsToMap(this.collectables)
         this.addObjectsToMap(this.throwableObjects)
         this.ctx.translate(-this.camera_x, 0)
         this.addToMap(this.bottle_bar)
@@ -66,8 +68,19 @@ class World {
                         this.damageCharacter()
                     }
                 }
-            }
-            )
+            })
+
+            this.collectables.forEach((collectable) => {
+                if (this.character.isColliding(collectable)) {
+                    if (collectable instanceof bottleCollectable) {
+                        if (this.current_bottles < this.max_bottles) {
+                            collectable.hideBottle()
+                            this.current_bottles += 1
+                            this.bottle_bar.updateBottleBar(this.current_bottles)
+                        }
+                    }
+                }
+            })
         }, 1000 / 10);
     }
 
