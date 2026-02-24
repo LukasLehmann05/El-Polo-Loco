@@ -6,6 +6,7 @@ class World {
     health_bar = new HealthBar()
     bottle_bar = new BottleBar()
     coin_bar = new CoinBar()
+    level = new Level()
     boss_bar = false
     throwableObject = new Throwable_Object()
     throwableObjects = []
@@ -18,10 +19,10 @@ class World {
     world
     camera_x = 0
 
-    enemies = level1.enemies
-    clouds = level1.clouds
-    backgrounds = level1.backgrounds
-    collectables = level1.collectables
+    enemies = []
+    clouds = []
+    backgrounds = []
+    collectables = []
     lastHit = 0
     damage_cooldown = 1
 
@@ -32,11 +33,11 @@ class World {
     bottle_damage = 1
 
     constructor(canvas, controls) {
+        this.setWorld()
         this.ctx = canvas.getContext("2d")
         this.canvas = canvas
         this.controls = controls
         this.createWorld()
-        this.setWorld()
         this.checkForCollision()
     }
 
@@ -61,6 +62,11 @@ class World {
         if (this.single_hud_object.length > 0) {
             this.addObjectsToMap(this.single_hud_object)
         }
+
+        if (!this.game_started) {
+            this.addToMap(new StartingScreen())
+        }
+
         this.ctx.translate(this.camera_x, 0)
 
         this.ctx.translate(-this.camera_x, 0)
@@ -175,6 +181,7 @@ class World {
     }
 
     setWorld() {
+        this.level.world = this
         this.character.world = this
         this.drawableObject.world = this
         this.throwableObject.world = this

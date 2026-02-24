@@ -24,3 +24,9 @@ window.addEventListener("keyup", (event) => {
     let key = event.code.replace("Key", "").toUpperCase()
     controls.handleKey(key, false)
 })
+
+function loadLevels() {
+    world.startGame()
+    loadLevel1(world)
+}
+

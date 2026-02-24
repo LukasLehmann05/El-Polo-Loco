@@ -1,4 +1,7 @@
-const level1 = new Level(
+function loadLevel1(world) {
+    let level = new Level()
+    level.loadLevelData(world,
+
     [
         new Chicken(),
         new Chicken(),
@@ -38,4 +41,5 @@ const level1 = new Level(
         new coinCollectable(1700),
         new coinCollectable(2100),
     ]
-)
+    )
+}

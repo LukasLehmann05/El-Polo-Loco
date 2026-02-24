@@ -1,14 +1,13 @@
 class Level {
-    enemies
-    clouds
-    backgrounds
-    collectables
 
-    constructor(enemies, clouds, backgrounds, collectables) {
-        this.enemies = enemies
-        this.clouds = clouds
-        this.backgrounds = backgrounds
-        this.collectables = collectables
+    constructor() {
+    }
+
+    loadLevelData(world,enemies, clouds, backgrounds, collectables) {
+        world.enemies.push(...enemies)
+        world.clouds.push(...clouds)
+        world.backgrounds.push(...backgrounds)
+        world.collectables.push(...collectables)
     }
 
 }
