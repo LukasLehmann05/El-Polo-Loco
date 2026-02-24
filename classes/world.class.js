@@ -1,4 +1,6 @@
 class World {
+    game_started = false
+    game_ended = false
     character = new Character()
     drawableObject = new DrawableObject()
     health_bar = new HealthBar()
@@ -8,6 +10,7 @@ class World {
     throwableObject = new Throwable_Object()
     throwableObjects = []
     single_hud_object = []
+    lost_info = new Lost_Info()
 
     canvas
     ctx
@@ -46,6 +49,8 @@ class World {
         this.addObjectsToMap(this.enemies)
         this.addObjectsToMap(this.collectables)
         this.addObjectsToMap(this.throwableObjects)
+        
+        this.addToMap(this.character)
 
         this.ctx.translate(-this.camera_x, 0)
         this.addToMap(this.bottle_bar)
@@ -56,13 +61,26 @@ class World {
         }
         this.ctx.translate(this.camera_x, 0)
 
-        this.addToMap(this.character)
-
         this.ctx.translate(-this.camera_x, 0)
 
         requestAnimationFrame(function () {
             this.createWorld()
         }.bind(this))
+    }
+
+    startGame() {
+        this.game_started = true
+    }
+
+    game_over(condition) {
+        this.game_ended = true
+
+        if (condition === "win") {
+            console.log("win");
+        } else if (condition === "lose") {
+            console.log("lose");
+            this.lost_info.game_ended()
+        }
     }
 
     AddSingleObjectToMap(object) {
@@ -113,6 +131,7 @@ class World {
                         if (enemy.health <= 0) {
                             enemy.died = true
                             enemy.endbossDied()
+                            this.game_over("win")
                         }
                     }
                 })
@@ -145,8 +164,9 @@ class World {
     }
 
     characterDied() {
-        if (this.drawableObject.health <= 0) {
+        if (this.drawableObject.health <= 0 && !this.character.died) {
             this.character.died = true
+            this.game_over("lose")
             return true
         }
     }
@@ -155,6 +175,7 @@ class World {
         this.character.world = this
         this.drawableObject.world = this
         this.throwableObject.world = this
+        this.lost_info.world = this
         this.character.animate()
     }
 
