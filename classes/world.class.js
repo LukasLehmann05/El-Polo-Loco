@@ -90,7 +90,7 @@ class World {
     checkForCollision() {
         setInterval(() => {
             this.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy)) {
+                if (this.character.isColliding(enemy) && !enemy.died) {
                     if (enemy instanceof Chicken) {
                         this.checkForJumpKill(enemy)
                     } else {
@@ -166,7 +166,6 @@ class World {
     characterDied() {
         if (this.drawableObject.health <= 0 && !this.character.died) {
             this.character.died = true
-            this.game_over("lose")
             return true
         }
     }
