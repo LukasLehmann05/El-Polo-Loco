@@ -10,7 +10,7 @@ class World {
     throwableObject = new Throwable_Object()
     throwableObjects = []
     single_hud_object = []
-    lost_info = new Lost_Info()
+    game_over_info = new Game_Over_Info()
 
     canvas
     ctx
@@ -49,13 +49,15 @@ class World {
         this.addObjectsToMap(this.enemies)
         this.addObjectsToMap(this.collectables)
         this.addObjectsToMap(this.throwableObjects)
-        
+
         this.addToMap(this.character)
 
         this.ctx.translate(-this.camera_x, 0)
+
         this.addToMap(this.bottle_bar)
         this.addToMap(this.health_bar)
         this.addToMap(this.coin_bar)
+
         if (this.single_hud_object.length > 0) {
             this.addObjectsToMap(this.single_hud_object)
         }
@@ -77,9 +79,10 @@ class World {
 
         if (condition === "win") {
             console.log("win");
+            this.game_over_info.game_won()
         } else if (condition === "lose") {
             console.log("lose");
-            this.lost_info.game_ended()
+            this.game_over_info.game_lost()
         }
     }
 
@@ -126,11 +129,12 @@ class World {
                             if (this.single_hud_object[0] instanceof BossBar) {
                                 this.single_hud_object[0].updateBossBar(enemy.health)
                             }
-                            
+
                         }
                         if (enemy.health <= 0) {
                             enemy.died = true
                             enemy.endbossDied()
+                            this.removeBossBar()
                             this.game_over("win")
                         }
                     }
@@ -174,7 +178,7 @@ class World {
         this.character.world = this
         this.drawableObject.world = this
         this.throwableObject.world = this
-        this.lost_info.world = this
+        this.game_over_info.world = this
         this.character.animate()
     }
 
@@ -200,6 +204,10 @@ class World {
             this.current_bottles -= 1
             this.bottle_bar.updateBottleBar(this.current_bottles)
         }
+    }
+
+    removeBossBar() {
+        this.single_hud_object.pop(BossBar)
     }
 
     addToMap(objectToAdd) {
