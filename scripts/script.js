@@ -2,6 +2,9 @@ const canvas_width = 1280
 const canvas_height = 720
 
 let canvas = document.getElementById("game_canvas")
+let game_wrapper = document.getElementById("game_wrapper")
+let fullscreen_icon = document.getElementById("fullscreen_icon")
+let fullscreen = false
 let world
 
 let controls = new Controls()
@@ -28,5 +31,18 @@ window.addEventListener("keyup", (event) => {
 function loadLevels() {
     world.startGame()
     loadLevel1(world)
+}
+
+function showFullscreen(event) {
+    event.stopPropagation()
+    if (!fullscreen) {
+        game_wrapper.requestFullscreen()
+        fullscreen = true
+        fullscreen_icon.src = "./img/controls/close_fullscreen.png"
+    } else {
+        document.exitFullscreen()
+        fullscreen = false
+        fullscreen_icon.src = "./img/controls/open_fullscreen.png"
+    }
 }
 

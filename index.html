@@ -10,9 +10,15 @@
     
     <h1>El Pollo Loco</h1>
 
-    <canvas class="game-canvas" id="game_canvas" onclick="loadLevels()">
+    <div class="game-wrapper" id="game_wrapper">
+        <canvas class="game-canvas" id="game_canvas" onclick="loadLevels()"></canvas>
 
-    </canvas>
+        <div class="controls">
+            <button onclick="showFullscreen(event)">
+                <img src="./img/controls/open_fullscreen.png" alt="open fullscreen" id="fullscreen_icon">
+            </button>
+        </div>
+    </div>
 
     <p class="start_text">click on the canvas above to start</p>
 
