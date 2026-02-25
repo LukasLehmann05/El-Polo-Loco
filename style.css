@@ -1,11 +1,31 @@
+@font-face {
+    font-family: "Archivo";
+    src: url(./fonts/Archivo-VariableFont_wdth\,wght.ttf);
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-family: "Archivo", sans-serif;
+    background-image: url(./img/background/webpage_background.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+h1 {
+    font-size: 54px;
+    color: white;
 }
 
 .game-canvas {
     height: 720px;
     width: 1280px;
     background-color: black;
+}
+
+.start_text {
+    font-size: 24px;
+    color: white;
+    margin-top: 20px;
 }
