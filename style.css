@@ -11,11 +11,11 @@ body {
     background-image: url(./img/background/webpage_background.jpg);
     background-size: cover;
     background-position: center;
+    color: white;
 }
 
 h1 {
     font-size: 54px;
-    color: white;
 }
 
 .game-canvas {
@@ -33,7 +33,6 @@ h1 {
 
 .start_text {
     font-size: 24px;
-    color: white;
     margin-top: 20px;
 }
 
@@ -59,4 +58,15 @@ h1 {
 .game-wrapper:fullscreen .game-canvas {
     width: 100vw;
     height: 56.25vw;
+}
+
+.controls-display {
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 10px 30px;
+    border-radius: 20px;
+}
+
+.controls-display p {
+    margin: 12px 0px;
+    font-size: 22px;
 }
