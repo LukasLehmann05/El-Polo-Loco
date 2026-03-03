@@ -6,6 +6,7 @@ let game_wrapper = document.getElementById("game_wrapper")
 let fullscreen_icon = document.getElementById("fullscreen_icon")
 let fullscreen = false
 let world
+let game_running = false
 
 let controls = new Controls()
 let throwableObject = new Throwable_Object()
@@ -19,18 +20,27 @@ function init() {
 }
 
 window.addEventListener("keydown", (event) => {
+    if (event.code === "Space") {
+        event.preventDefault()
+    }
     let key = event.code.replace("Key", "").toUpperCase()
     controls.handleKey(key, true)
 })
 
 window.addEventListener("keyup", (event) => {
     let key = event.code.replace("Key", "").toUpperCase()
+    if (key === "SPACE") {
+        event.preventDefault()
+    }
     controls.handleKey(key, false)
 })
 
 function loadLevels() {
-    world.startGame()
-    loadLevel1(world)
+    if (!game_running) {
+        world.startGame()
+        loadLevel1(world)
+        game_running = true
+    }
 }
 
 function showFullscreen(event) {
@@ -44,5 +54,26 @@ function showFullscreen(event) {
         fullscreen = false
         fullscreen_icon.src = "./img/controls/open_fullscreen.png"
     }
+}
+
+function displayRestartButton() {
+    let restart_button = document.getElementById("restart_button")
+    if (restart_button.classList.contains("display-block")) {
+        restart_button.classList.remove("display-block")
+    } else {
+        restart_button.classList.add("display-block")
+    }
+}
+
+function clearOldWorld() {
+    console.log("clear");
+    game_running = false
+}
+
+function restartGame(event) {
+    event.stopPropagation()
+    clearOldWorld()
+    world = new World(canvas, controls, throwableObject)
+    loadLevels()
 }
 

@@ -90,6 +90,8 @@ class World {
             console.log("lose");
             this.game_over_info.game_lost()
         }
+
+        displayRestartButton()
     }
 
     AddSingleObjectToMap(object) {
