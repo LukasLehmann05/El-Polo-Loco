@@ -134,3 +134,9 @@ h1 {
     padding: 16px 40px;
     border-radius: 12px;
 }
+
+.volume-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}

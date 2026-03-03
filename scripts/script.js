@@ -78,3 +78,7 @@ function restartGame(event) {
     loadLevels()
 }
 
+function changeVolume(event) {
+    event.stopPropagation()
+}
+
