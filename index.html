@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,37 +8,42 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./css/responsive.css">
 </head>
+
 <body onload="init()">
-    
-    <h1>El Pollo Loco</h1>
+    <article class="content">
+        <header class="title-header">
+            <h1>El Pollo Loco</h1>
+        </header>
 
-    <div class="game-wrapper" id="game_wrapper">
-        <canvas class="game-canvas" id="game_canvas" onclick="loadLevels()"></canvas>
+        <main>
+            <div class="game-wrapper" id="game_wrapper">
+                <canvas class="game-canvas" id="game_canvas" onclick="loadLevels()"></canvas>
 
-        <div class="controls">
-            <button onclick="showFullscreen(event)">
-                <img src="./img/controls/open_fullscreen.png" alt="open fullscreen" id="fullscreen_icon">
-            </button>
-        </div>
+                <div class="controls">
+                    <button onclick="showFullscreen(event)">
+                        <img src="./img/controls/open_fullscreen.png" alt="open fullscreen" id="fullscreen_icon">
+                    </button>
+                </div>
 
-        <button class="restart-button" id="restart_button" onclick="restartGame(event)">
-            Restart
-        </button>
-    </div>
+                <button class="restart-button" id="restart_button" onclick="restartGame(event)">
+                    Restart
+                </button>
+            </div>
 
-    <p class="start_text">click on the canvas above to start</p>
+            <p class="start-text">click on the canvas above to start</p>
+        </main>
 
-    <section class="controls-display">
-        <h2>controls</h2>
-        <div>
-            <p>A - Move Left</p>
-            <p>D - Move Right</p>
-            <p>W - Jump</p>
-            <p>F - Throw</p>
-            <p>Space - Jump</p>
-        </div>
-    </section>
-
+        <footer class="controls-display">
+            <h2 class="controls-title">controls</h2>
+            <div class="controls-description">
+                <p>A - Move Left</p>
+                <p>D - Move Right</p>
+                <p>W - Jump</p>
+                <p>F - Throw</p>
+                <p>Space - Jump</p>
+            </div>
+        </footer>
+    </article>
 </body>
 
 <script src="./classes/world.class.js"></script>
