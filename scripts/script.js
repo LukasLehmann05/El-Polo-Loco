@@ -71,6 +71,7 @@ function clearOldWorld() {
 }
 
 function restartGame(event) {
+    displayRestartButton()
     event.stopPropagation()
     clearOldWorld()
     world = new World(canvas, controls, throwableObject)
