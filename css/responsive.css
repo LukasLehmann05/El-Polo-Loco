@@ -1,0 +1,11 @@
+@media (max-width: 1280px) {
+    .game-wrapper {
+        width: 100%;
+        height: auto;
+    }
+
+    .game-canvas {
+        width: 100%;
+        height: auto;
+    }
+}
