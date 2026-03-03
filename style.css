@@ -70,6 +70,12 @@ h1 {
     height: 56.25vw;
 }
 
+.game-wrapper:fullscreen {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .controls-display p {
     margin: 12px 0px;
     font-size: 22px;
