@@ -1,0 +1,14 @@
+@font-face {
+    font-family: "Archivo";
+    src: url(../fonts/Archivo-VariableFont_wdth\,wght.ttf);
+}
+
+body {
+    font-family: "Archivo", sans-serif;
+    background-image: url(../img/background/webpage_background.jpg);
+    background-size: cover;
+    background-position: center;
+    color: white;
+    margin: 0px;
+    min-height: 100vh;
+}
