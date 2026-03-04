@@ -6,6 +6,7 @@ function loadLevel1(world) {
         new Chicken(),
         new Chicken(),
         new Chicken(),
+        new SmallChicken(),
         new Endboss()
     ],
 
