@@ -153,3 +153,20 @@ h1 {
 .volume-control:hover input {
     display: block;
 }
+
+.legal-links {
+    display: flex;
+    gap: 16px;
+    margin-top: 20px;
+}
+
+.legal-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+.legal-links a:hover {
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+}
