@@ -24,6 +24,22 @@ function init() {
     canvas.height = canvas_height
 
     world = new World(canvas, controls, throwableObject)
+
+    let stored_mute = getFromLocalStorage("mute")
+    let stored_volume = getFromLocalStorage("volume")
+    setSoundFromStorage(stored_mute, stored_volume)
+}
+
+function setSoundFromStorage(stored_mute, stored_volume) {
+    if (stored_mute !== null) {
+        mute = stored_mute === "true"
+        changeMuteIcon()
+    }
+
+    if (stored_volume !== null) {
+        volume = parseFloat(stored_volume)
+        document.getElementById("volume_slider").value = volume * 100
+    }
 }
 
 window.addEventListener("keydown", (event) => {
@@ -88,6 +104,7 @@ function changeVolume(event) {
     event.stopPropagation()
     let input_volume = document.getElementById("volume_slider").value
     volume = input_volume / 100
+    addToLocalStorage("volume", volume)
     
     if (input_volume == 0) {
         mute = true
@@ -112,6 +129,7 @@ function toggleMute(event) {
     changeMuteIcon()
 
     let input_volume = document.getElementById("volume_slider").value
+    addToLocalStorage("mute", mute)
 
     if (!mute && input_volume == 0) {
         document.getElementById("volume_slider").value = 25
@@ -127,4 +145,12 @@ function changeMuteIcon() {
     } else {
         mute_icon.src = "./img/controls/volume_on.png"
     }
+}
+
+function addToLocalStorage(key, value) {
+    localStorage.setItem(key, value)
+}
+
+function getFromLocalStorage(key) {
+    return localStorage.getItem(key)
 }
