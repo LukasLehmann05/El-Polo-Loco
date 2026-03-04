@@ -73,13 +73,13 @@ class Character extends Moveable_object {
     }
 
     selectAnimation() {
-        if (this.world.controls.JUMP) {
+        if (this.world.controls.JUMP && !this.died) {
             this.playAnimation(this.JUMPING_SEQUENCE)
-        } else if (this.world.controls.MOVE_LEFT || this.world.controls.MOVE_RIGHT) {
+        } else if (this.world.controls.MOVE_LEFT || this.world.controls.MOVE_RIGHT && !this.died) {
             this.playAnimation(this.WALKING_SEQUENCE)
-        } else if (this.died) {
+        } else if (this.died && !this.died) {
             this.playAnimation(this.DIED_SEQUENCE)
-        } else if (this.world.checkForCooldown()) {
+        } else if (this.world.checkForCooldown() && !this.died) {
             this.playAnimation(this.HURT_SEQUENCE)
         }
 
@@ -89,10 +89,10 @@ class Character extends Moveable_object {
     }
 
     moveCharacter() {
-        if (this.world.controls.MOVE_LEFT && this.pos_x > this.limit_left) {
+        if (this.world.controls.MOVE_LEFT && this.pos_x > this.limit_left && !this.died) {
             this.pos_x -= this.speed
             this.mirrorImage = true
-        } else if (this.world.controls.MOVE_RIGHT && this.pos_x < this.limit_right) {
+        } else if (this.world.controls.MOVE_RIGHT && this.pos_x < this.limit_right && !this.died) {
             this.pos_x += this.speed
             this.mirrorImage = false
         }
@@ -106,7 +106,7 @@ class Character extends Moveable_object {
     }
 
     jump() {
-        if (this.world.controls.JUMP && this.vertical_speed == 0 && this.pos_y == this.character_base_y) {
+        if (this.world.controls.JUMP && this.vertical_speed == 0 && this.pos_y == this.character_base_y && !this.died) {
             this.vertical_speed = -this.jump_speed
         }
     }
