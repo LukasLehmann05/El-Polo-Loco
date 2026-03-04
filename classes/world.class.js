@@ -120,7 +120,7 @@ class World {
     checkEnemyCollision() {
         this.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !enemy.died) {
-                if (enemy instanceof Chicken) {
+                if (enemy instanceof Chicken || enemy instanceof SmallChicken) {
                     this.checkForJumpKill(enemy)
                 } else {
                     this.damageCharacter()
