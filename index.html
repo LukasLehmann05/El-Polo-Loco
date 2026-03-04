@@ -18,7 +18,7 @@
 
         <main>
             <div class="game-wrapper" id="game_wrapper">
-                <canvas class="game-canvas" id="game_canvas" onclick="loadLevels()"></canvas>
+                <canvas class="game-canvas" id="game_canvas"></canvas>
 
                 <div class="controls">
                     <div class="volume-control">
@@ -35,9 +35,12 @@
                 <button class="restart-button" id="restart_button" onclick="restartGame(event)">
                     Restart
                 </button>
+                <button class="start-button" id="start_button" onclick="loadLevels()">
+                    Start
+                </button>
             </div>
 
-            <p class="start-text">click on the canvas above to start</p>
+            <p class="start-text">click on the start button above to start</p>
         </main>
 
         <footer class="controls-display">

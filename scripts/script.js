@@ -59,6 +59,7 @@ window.addEventListener("keyup", (event) => {
 })
 
 function loadLevels() {
+    document.getElementById("start_button").style.display = "none"
     if (!game_running) {
         world.startGame()
         loadLevel1(world)
