@@ -7,9 +7,15 @@ let fullscreen_icon = document.getElementById("fullscreen_icon")
 let fullscreen = false
 let world
 let game_running = false
+let volume = 0.5
 
 let controls = new Controls()
 let throwableObject = new Throwable_Object()
+
+let sound_coin_pickup = "./sounds/coin_pickup.wav"
+let sound_game_lost = "./sounds/lost_sound.wav"
+let sound_game_won = "./sounds/victory_sound.wav"
+let sound_pickup = "./sounds/pickup_sound.wav"
 
 function init() {
 
@@ -66,7 +72,6 @@ function displayRestartButton() {
 }
 
 function clearOldWorld() {
-    console.log("clear");
     game_running = false
 }
 
@@ -80,5 +85,13 @@ function restartGame(event) {
 
 function changeVolume(event) {
     event.stopPropagation()
+    let input_volume = document.getElementById("volume_slider").value
+    volume = input_volume / 100
+}
+
+function playSound(url) {
+    let audio = new Audio(url)
+    audio.volume = volume
+    audio.play()
 }
 

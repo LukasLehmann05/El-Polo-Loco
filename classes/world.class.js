@@ -84,11 +84,11 @@ class World {
         this.game_ended = true
 
         if (condition === "win") {
-            console.log("win");
             this.game_over_info.game_won()
+            playSound(sound_game_won)
         } else if (condition === "lose") {
-            console.log("lose");
             this.game_over_info.game_lost()
+            playSound(sound_game_lost)
         }
 
         displayRestartButton()

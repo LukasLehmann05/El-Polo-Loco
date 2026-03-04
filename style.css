@@ -50,6 +50,9 @@ h1 {
     position: absolute;
     top: 12px;
     right: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 16px;
     z-index: 10;
 }
 
@@ -139,4 +142,12 @@ h1 {
     display: flex;
     align-items: center;
     gap: 8px;
+}
+
+.volume-control input {
+    display: none;
+}
+
+.volume-control:hover input {
+    display: block;
 }
