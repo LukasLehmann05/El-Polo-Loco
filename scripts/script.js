@@ -8,6 +8,7 @@ let fullscreen = false
 let world
 let game_running = false
 let volume = 0.5
+let mute = false
 
 let controls = new Controls()
 let throwableObject = new Throwable_Object()
@@ -87,11 +88,43 @@ function changeVolume(event) {
     event.stopPropagation()
     let input_volume = document.getElementById("volume_slider").value
     volume = input_volume / 100
+    
+    if (input_volume == 0) {
+        mute = true
+        changeMuteIcon()
+    } else {
+        mute = false
+        changeMuteIcon()
+    }
 }
 
 function playSound(url) {
-    let audio = new Audio(url)
-    audio.volume = volume
-    audio.play()
+    if (!mute) {
+        let audio = new Audio(url)
+        audio.volume = volume
+        audio.play()
+    }
 }
 
+function toggleMute(event) {
+    event.stopPropagation()
+    mute = !mute
+    changeMuteIcon()
+
+    let input_volume = document.getElementById("volume_slider").value
+
+    if (!mute && input_volume == 0) {
+        document.getElementById("volume_slider").value = 25
+        changeVolume(event)
+    }
+}
+
+function changeMuteIcon() {
+    let mute_icon = document.getElementById("mute_icon")
+
+    if (mute) {
+        mute_icon.src = "./img/controls/volume_off.png"
+    } else {
+        mute_icon.src = "./img/controls/volume_on.png"
+    }
+}
