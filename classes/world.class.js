@@ -81,17 +81,19 @@ class World {
     }
 
     game_over(condition) {
-        this.game_ended = true
+        if (!this.game_ended) {
+            this.game_ended = true
 
-        if (condition === "win") {
-            this.game_over_info.game_won()
-            playSound(sound_game_won)
-        } else if (condition === "lose") {
-            this.game_over_info.game_lost()
-            playSound(sound_game_lost)
+            if (condition === "win") {
+                this.game_over_info.game_won()
+                playSound(sound_game_won)
+            } else if (condition === "lose") {
+                this.game_over_info.game_lost()
+                playSound(sound_game_lost)
+            }
+
+            displayRestartButton()
         }
-
-        displayRestartButton()
     }
 
     AddSingleObjectToMap(object) {
@@ -178,6 +180,7 @@ class World {
     characterDied() {
         if (this.drawableObject.health <= 0 && !this.character.died) {
             this.character.died = true
+            this.game_over("lose")
             return true
         }
     }
