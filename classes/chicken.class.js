@@ -5,6 +5,7 @@ class Chicken extends Moveable_object {
     width = 100
     target_fps = 1000/60
     died = false
+    health = 1
 
     WALKING_SEQUENCE = [
         "../img/enemies/chicken/chicken_normal/1_walk/1_w.png",
@@ -34,7 +35,7 @@ class Chicken extends Moveable_object {
         }, this.animationFPS)
     }
 
-    chickenDied() {
+    enemyKilled() {
         this.speed = 0 
     }
 }

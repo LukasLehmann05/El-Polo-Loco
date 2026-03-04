@@ -102,66 +102,95 @@ class World {
 
     checkForCollision() {
         setInterval(() => {
-            this.enemies.forEach((enemy) => {
-                if (this.character.isColliding(enemy) && !enemy.died) {
-                    if (enemy instanceof Chicken) {
-                        this.checkForJumpKill(enemy)
-                    } else {
-                        this.damageCharacter()
-                    }
-                }
-            })
-
-            this.collectables.forEach((collectable) => {
-                if (this.character.isColliding(collectable)) {
-                    if (collectable instanceof bottleCollectable) {
-                        if (this.current_bottles < this.max_bottles && !collectable.collected) {
-                            collectable.hideBottle()
-                            this.current_bottles += 1
-                            this.bottle_bar.updateBottleBar(this.current_bottles)
-                        }
-                    } else if (collectable instanceof coinCollectable) {
-                        if (this.current_coins < this.max_coins && !collectable.collected) {
-                            collectable.hideCoin()
-                            this.current_coins += 1
-                            this.coin_bar.updateCoinBar(this.current_coins)
-                        }
-                    }
-                }
-            })
-
-            this.throwableObjects.forEach((bottle) => {
-                this.enemies.forEach((enemy) => {
-                    if (bottle.isColliding(enemy) && !enemy.died && enemy instanceof Endboss) {
-                        if (enemy.health > 0 && bottle.bottle_hit === false) {
-                            enemy.health -= this.bottle_damage
-                            bottle.bottle_hit = true
-                            if (this.single_hud_object[0] instanceof BossBar) {
-                                this.single_hud_object[0].updateBossBar(enemy.health)
-                            }
-
-                        }
-                        if (enemy.health <= 0) {
-                            enemy.died = true
-                            enemy.endbossDied()
-                            this.removeBossBar()
-                            this.game_over("win")
-                        }
-                    }
-                })
-            })
-
-
+            this.checkEnemyCollision()
+            this.checkCollectAbleCollision()
+            this.checkThrowableObjectCollision()
         }, 1000 / 10);
+    }
+
+    checkEnemyCollision() {
+        this.enemies.forEach((enemy) => {
+            if (this.character.isColliding(enemy) && !enemy.died) {
+                if (enemy instanceof Chicken) {
+                    this.checkForJumpKill(enemy)
+                } else {
+                    this.damageCharacter()
+                }
+            }
+        })
+    }
+
+    checkCollectAbleCollision() {
+        this.collectables.forEach((collectable) => {
+            if (this.character.isColliding(collectable)) {
+                if (collectable instanceof bottleCollectable) {
+                    if (this.current_bottles < this.max_bottles && !collectable.collected) {
+                        this.pickupBottle(collectable)
+                    }
+                } else if (collectable instanceof coinCollectable) {
+                    if (this.current_coins < this.max_coins && !collectable.collected) {
+                        this.pickupCoin(collectable)
+                    }
+                }
+            }
+        })
+    }
+
+    checkThrowableObjectCollision() {
+        this.throwableObjects.forEach((bottle) => {
+            this.enemies.forEach((enemy) => {
+                if (bottle.isColliding(enemy) && !enemy.died) {
+                    if (enemy.health > 0 && bottle.bottle_hit === false) {
+                        enemy.health -= this.bottle_damage
+                        bottle.bottle_hit = true
+
+                        this.checkForEnemyDeath(enemy)
+                        if (enemy instanceof Endboss && this.single_hud_object[0] instanceof BossBar) {
+                            this.single_hud_object[0].updateBossBar(enemy.health)
+                        }
+                    }
+                }
+            })
+        })
+    }
+
+    checkForEnemyDeath(enemy) {
+        if (enemy.health == 0) {
+            this.killEnemy(enemy)
+            if (enemy instanceof Endboss) {
+                if (this.single_hud_object[0] instanceof BossBar) {
+                    this.single_hud_object[0].updateBossBar(enemy.health)
+                    this.removeBossBar()
+                    this.game_over("win")
+                }
+
+            }
+        }
+    }
+
+    pickupCoin(collectable) {
+        collectable.hideCoin()
+        this.current_coins += 1
+        this.coin_bar.updateCoinBar(this.current_coins)
+    }
+
+    pickupBottle(collectable) {
+        collectable.hideBottle()
+        this.current_bottles += 1
+        this.bottle_bar.updateBottleBar(this.current_bottles)
     }
 
     checkForJumpKill(enemy) {
         if (this.character.vertical_speed > 0 && !enemy.died) { //&& this.character.pos_y < enemy.pos_y
-            enemy.died = true
-            enemy.chickenDied()
+            this.killEnemy(enemy)
         } else if (!enemy.died) {
             this.damageCharacter()
         }
+    }
+
+    killEnemy(enemy) {
+        enemy.died = true
+        enemy.enemyKilled()
     }
 
     damageCharacter() {

@@ -53,7 +53,7 @@ class Endboss extends Moveable_object {
         }, this.animationFPS)
     }
 
-    endbossDied() {
+    enemyKilled() {
         this.speed = 0
         this.died = true
         this.playDiedAnimation()

@@ -28,6 +28,7 @@ h1 {
     height: 720px;
     width: 1280px;
     background-color: black;
+    cursor: pointer;
 }
 
 .game-wrapper {

@@ -9,3 +9,23 @@
         height: auto;
     }
 }
+
+@media (max-width: 600px) {
+    .controls-title {
+        font-size: 26px;
+    }
+
+    .start.text {
+        font-size: 20px;
+    }
+
+    .controls-display p {
+        font-size: 18px;
+    }
+}
+
+@media (max-width: 420px) {
+    h1 {
+        font-size: 32px;
+    }
+}
