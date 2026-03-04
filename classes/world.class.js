@@ -1,6 +1,7 @@
 class World {
     game_started = false
     game_ended = false
+    display_endscreen = false
     character = new Character()
     drawableObject = new DrawableObject()
     health_bar = new HealthBar()
@@ -67,6 +68,10 @@ class World {
             this.addToMap(new StartingScreen())
         }
 
+        if (this.display_endscreen) {
+            this.addToMap(new EndScreen())
+        }
+
         this.ctx.translate(this.camera_x, 0)
 
         this.ctx.translate(-this.camera_x, 0)
@@ -93,6 +98,10 @@ class World {
             }
 
             displayRestartButton()
+
+            setTimeout(() => {
+                this.display_endscreen = true
+            }, 3000)
         }
     }
 
