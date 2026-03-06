@@ -15,9 +15,9 @@ class SmallChicken extends Moveable_object {
 
     dead_image = "../img/enemies/chicken/chicken_small/2_dead/dead.png"
 
-    constructor() {
+    constructor(offset_x) {
         super().loadImage("../img/enemies/chicken/chicken_small/1_walk/1_w.png")
-        this.pos_x = 300 + Math.random() * 700
+        this.pos_x = offset_x + Math.random() * 200
         this.speed = 2 + Math.random() * 0.35
         this.loadImages([this.dead_image])
         this.loadImages(this.WALKING_SEQUENCE)

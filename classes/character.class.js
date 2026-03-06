@@ -1,12 +1,14 @@
 class Character extends Moveable_object {
 
+    levels = 2
+
     height = 400
     width = 250
     pos_y = 260
     speed = 10
     character_offet_right = 200
     limit_left = -1080
-    limit_right = 1480
+    limit_right = (this.levels + 1) * 1280 - 1080
     character_base_y = 260
 
     acceleration = -0.5

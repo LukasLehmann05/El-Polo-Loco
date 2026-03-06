@@ -63,6 +63,7 @@ function loadLevels() {
     if (!game_running) {
         world.startGame()
         loadLevel1(world)
+        loadLevel2(world)
         game_running = true
     }
 }

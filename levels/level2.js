@@ -1,11 +1,15 @@
-function loadLevel1(world) {
-    let levelCount = 1
-    let levelBeginn = 0
+function loadLevel2(world) {
+    let levelCount = 2
+    let levelBeginn = 2560 * (levelCount - 1)
     let level = new Level()
     level.loadLevelData(world,
 
     [
-        new SmallChicken(600),
+        new Chicken(levelBeginn),
+        new Chicken(levelBeginn),
+        new Chicken(levelBeginn),
+        new SmallChicken(levelBeginn),
+        new Endboss(levelBeginn)
     ],
 
     [
@@ -15,17 +19,13 @@ function loadLevel1(world) {
 
     [
         new Background("../img/background/layers/air.png", levelBeginn),
-        new Background("../img/background/layers/air.png", 1280 * levelCount),
-        new Background("../img/background/layers/air.png", -1280),
+        new Background("../img/background/layers/air.png", 2560 * levelCount),
         new Background("../img/background/layers/3_third_layer/1.png", levelBeginn),
-        new Background("../img/background/layers/3_third_layer/2.png", 1280 * levelCount),
-        new Background("../img/background/layers/3_third_layer/2.png", -1280),
+        new Background("../img/background/layers/3_third_layer/2.png", 2560 * levelCount),
         new Background("../img/background/layers/2_second_layer/1.png", levelBeginn),
-        new Background("../img/background/layers/2_second_layer/2.png", 1280 * levelCount),
-        new Background("../img/background/layers/2_second_layer/2.png", -1280),
+        new Background("../img/background/layers/2_second_layer/2.png", 2560 * levelCount),
         new Background("../img/background/layers/1_first_layer/1.png", levelBeginn),
-        new Background("../img/background/layers/1_first_layer/2.png", 1280 * levelCount),
-        new Background("../img/background/layers/1_first_layer/2.png", -1280),
+        new Background("../img/background/layers/1_first_layer/2.png", 2560 * levelCount),
     ],
     [
         new bottleCollectable(levelBeginn + 400),

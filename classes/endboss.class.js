@@ -22,9 +22,9 @@ class Endboss extends Moveable_object {
 
 
 
-    constructor() {
+    constructor(offset_x) {
         super().loadImage("../img/enemies/boss_chicken/1_walk/G1.png")
-        this.pos_x = 300 + Math.random() * 700
+        this.pos_x = offset_x + Math.random() * 200
         this.speed = 2 + Math.random() * 0.35
         this.loadImages(this.WALKING_SEQUENCE)
         this.loadImages(this.DIED_SEQUENCE)
