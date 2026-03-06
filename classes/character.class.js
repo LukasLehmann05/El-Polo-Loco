@@ -15,6 +15,8 @@ class Character extends Moveable_object {
     jump_speed = 15
     vertical_speed = 0
 
+    last_move = new Date().getTime()
+
     died = false
 
     WALKING_SEQUENCE = [
@@ -54,12 +56,40 @@ class Character extends Moveable_object {
         "../img/pepe/4_hurt/H-43.png",
     ]
 
+    IDLE_SEQUENCE = [
+        "../img/pepe/1_idle/idle/I-1.png",
+        "../img/pepe/1_idle/idle/I-2.png",
+        "../img/pepe/1_idle/idle/I-3.png",
+        "../img/pepe/1_idle/idle/I-4.png",
+        "../img/pepe/1_idle/idle/I-5.png",
+        "../img/pepe/1_idle/idle/I-6.png",
+        "../img/pepe/1_idle/idle/I-7.png",
+        "../img/pepe/1_idle/idle/I-8.png",
+        "../img/pepe/1_idle/idle/I-9.png",
+        "../img/pepe/1_idle/idle/I-10.png",
+    ]
+
+    SLEEPING_SEQUENCE = [
+        "../img/pepe/1_idle/long_idle/I-11.png",
+        "../img/pepe/1_idle/long_idle/I-12.png",
+        "../img/pepe/1_idle/long_idle/I-13.png",
+        "../img/pepe/1_idle/long_idle/I-14.png",
+        "../img/pepe/1_idle/long_idle/I-15.png",
+        "../img/pepe/1_idle/long_idle/I-16.png",
+        "../img/pepe/1_idle/long_idle/I-17.png",
+        "../img/pepe/1_idle/long_idle/I-18.png",
+        "../img/pepe/1_idle/long_idle/I-19.png",
+        "../img/pepe/1_idle/long_idle/I-20.png",
+    ]
+
     constructor() {
         super().loadImage("../img/pepe/1_idle/idle/I-1.png")
         this.loadImages(this.WALKING_SEQUENCE)
         this.loadImages(this.JUMPING_SEQUENCE)
         this.loadImages(this.DIED_SEQUENCE)
         this.loadImages(this.HURT_SEQUENCE)
+        this.loadImages(this.IDLE_SEQUENCE)
+        this.loadImages(this.SLEEPING_SEQUENCE)
         this.gravity(this)
     }
 
@@ -77,12 +107,18 @@ class Character extends Moveable_object {
     selectAnimation() {
         if (this.world.controls.JUMP && !this.died) {
             this.playAnimation(this.JUMPING_SEQUENCE)
+            this.last_move = new Date().getTime()
         } else if (this.world.controls.MOVE_LEFT || this.world.controls.MOVE_RIGHT && !this.died) {
             this.playAnimation(this.WALKING_SEQUENCE)
+            this.last_move = new Date().getTime()
         } else if (this.died && !this.died) {
             this.playAnimation(this.DIED_SEQUENCE)
         } else if (this.world.checkForCooldown() && !this.died) {
             this.playAnimation(this.HURT_SEQUENCE)
+        } else if (new Date().getTime() - this.last_move > 15000 && !this.died) {
+            this.playAnimation(this.SLEEPING_SEQUENCE)
+        } else {
+            this.playAnimation(this.IDLE_SEQUENCE)
         }
 
         if (this.world.controls.THROW) {
