@@ -42,40 +42,40 @@ class World {
         this.checkForCollision()
     }
 
-    createWorld() {
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
-        this.ctx.translate(this.camera_x, 0)
-
+    addGameContent() {
         this.addObjectsToMap(this.backgrounds)
         this.addObjectsToMap(this.clouds)
         this.addObjectsToMap(this.enemies)
         this.addObjectsToMap(this.collectables)
         this.addObjectsToMap(this.throwableObjects)
-
         this.addToMap(this.character)
-
         this.ctx.translate(-this.camera_x, 0)
-
         this.addToMap(this.bottle_bar)
         this.addToMap(this.health_bar)
         this.addToMap(this.coin_bar)
-
         if (this.single_hud_object.length > 0) {
             this.addObjectsToMap(this.single_hud_object)
         }
+        this.ctx.translate(this.camera_x, 0)
+    }
 
+    displayScreen() {
         if (!this.game_started) {
             this.addToMap(new StartingScreen())
         }
-
         if (this.display_endscreen) {
             this.addToMap(new EndScreen())
         }
+    }
 
+    createWorld() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         this.ctx.translate(this.camera_x, 0)
-
+        if (this.game_started) {
+            this.addGameContent()
+        }
         this.ctx.translate(-this.camera_x, 0)
-
+        this.displayScreen()
         requestAnimationFrame(function () {
             this.createWorld()
         }.bind(this))
