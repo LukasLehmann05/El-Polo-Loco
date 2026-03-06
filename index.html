@@ -25,19 +25,24 @@
                         <button class="mute_button" onclick="toggleMute(event)">
                             <img id="mute_icon" src="./img/controls/volume_on.png" alt="volume_icon">
                         </button>
-                        <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume_slider" onchange="changeVolume(event)">
+                        <input type="range" min="0" max="100" value="50" class="volume-slider" id="volume_slider"
+                            onchange="changeVolume(event)">
                     </div>
                     <button onclick="showFullscreen(event)">
                         <img src="./img/controls/open_fullscreen.png" alt="open fullscreen" id="fullscreen_icon">
                     </button>
                 </div>
-
-                <button class="restart-button" id="restart_button" onclick="restartGame(event)">
-                    Restart
-                </button>
-                <button class="start-button" id="start_button" onclick="loadLevels()">
-                    Start
-                </button>
+                <div class="action-buttons">
+                    <button class="restart-button" id="restart_button" onclick="restartGame(event)">
+                        Restart
+                    </button>
+                    <button class="start-button" id="start_button" onclick="loadLevels()">
+                        Start
+                    </button>
+                    <button class="restart-button" id="menu_button" onclick="showMenu(event)">
+                        Menu
+                    </button>
+                </div>
             </div>
 
             <p class="start-text">click on the start button above to start</p>

@@ -82,10 +82,13 @@ function showFullscreen(event) {
 
 function displayRestartButton() {
     let restart_button = document.getElementById("restart_button")
+    let menu_button = document.getElementById("menu_button")
     if (restart_button.classList.contains("display-block")) {
         restart_button.classList.remove("display-block")
+        menu_button.classList.remove("display-block")
     } else {
         restart_button.classList.add("display-block")
+        menu_button.classList.add("display-block")
     }
 }
 
@@ -99,6 +102,16 @@ function restartGame(event) {
     clearOldWorld()
     world = new World(canvas, controls, throwableObject)
     loadLevels()
+}
+
+function showMenu(event) {
+    event.stopPropagation()
+    displayRestartButton()
+    document.getElementById("start_button").style.display = "block"
+    world.game_started = false
+    world.game_ended = false
+    world.display_endscreen = false
+    clearOldWorld()
 }
 
 function changeVolume(event) {
