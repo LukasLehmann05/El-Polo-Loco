@@ -3,6 +3,7 @@ class World {
     game_ended = false
     display_endscreen = false
     isPhone = false
+    win = false
     character = new Character()
     drawableObject = new DrawableObject()
     health_bar = new HealthBar()
@@ -65,7 +66,11 @@ class World {
             this.addToMap(new StartingScreen())
         }
         if (this.display_endscreen) {
-            this.addToMap(new EndScreen())
+            if (this.win) {
+                this.addToMap(new EndScreen("win"))
+            } else {
+                this.addToMap(new EndScreen("lose"))
+            }
         }
     }
 
@@ -96,6 +101,7 @@ class World {
             this.game_ended = true
 
             if (condition === "win") {
+                this.win = true
                 this.game_over_info.game_won()
                 playSound(sound_game_won)
             } else if (condition === "lose") {
