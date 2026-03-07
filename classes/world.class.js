@@ -99,9 +99,10 @@ class World {
     game_over(condition) {
         if (!this.game_ended) {
             this.game_ended = true
-            
+
             this.displayGameOverScreen(condition)
             displayRestartButton()
+            hideMobileControls()
 
             setTimeout(() => {
                 this.display_endscreen = true

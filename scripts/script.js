@@ -27,8 +27,6 @@ function init() {
     let stored_mute = getFromLocalStorage("mute")
     let stored_volume = getFromLocalStorage("volume")
     setSoundFromStorage(stored_mute, stored_volume)
-
-    checkForMobile()
     checkOrientation()
 }
 
@@ -63,6 +61,7 @@ window.addEventListener("keyup", (event) => {
 function loadLevels() {
     document.getElementById("start_button").style.display = "none"
     if (!game_running) {
+        checkForMobile()
         world.startGame()
         loadLevel1(world)
         loadLevel2(world)
@@ -86,7 +85,7 @@ function showFullscreen(event) {
 function displayRestartButton() {
     let restart_button = document.getElementById("restart_button")
     let menu_button = document.getElementById("menu_button")
-    
+
     if (restart_button.classList.contains("display-block")) {
         restart_button.classList.remove("display-block")
         menu_button.classList.remove("display-block")
@@ -153,6 +152,12 @@ function toggleMute(event) {
         document.getElementById("volume_slider").value = 25
         changeVolume(event)
     }
+}
+
+function hideMobileControls() {
+    document.querySelectorAll(".mobile-move-buttons").forEach(button => {
+        button.style.display = "none"
+    })
 }
 
 function changeMuteIcon() {
