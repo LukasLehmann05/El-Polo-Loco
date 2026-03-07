@@ -121,7 +121,9 @@ class Character extends Moveable_object {
         } else {
             this.playAnimation(this.IDLE_SEQUENCE)
         }
+    }
 
+    checkForBottleThrow() {
         if (this.world.controls.THROW) {
             this.world.throwBottle(this.mirrorImage, this.pos_x, this.pos_y)
         }

@@ -36,7 +36,7 @@
                     </button>
                 </div>
                 <div class="action-buttons">
-                    <button class="mobile-move-buttons" id="move_button_left" onpointerdown="mobileLeftStart()" onpointerup="mobileLeftStop()" oncontextmenu="disableContext(event)">
+                    <button class="mobile-move-buttons" id="move_button_left" onpointerdown="handleMobileControl('A', true)" onpointerup="handleMobileControl('A', false)" oncontextmenu="disableContext(event)">
                         L
                     </button>
                     <div class="menu-buttons">
@@ -50,7 +50,7 @@
                             Menu
                         </button>
                     </div>
-                    <button class="mobile-move-buttons" id="move_button_right" onpointerdown="mobileRightStart()" onpointerup="mobileRightStop()" oncontextmenu="disableContext(event)">
+                    <button class="mobile-move-buttons" id="move_button_right" onpointerdown="handleMobileControl('D', true)" onpointerup="handleMobileControl('D', false)" oncontextmenu="disableContext(event)">
                         R
                     </button>
                 </div>

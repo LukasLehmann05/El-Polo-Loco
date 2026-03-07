@@ -99,21 +99,24 @@ class World {
     game_over(condition) {
         if (!this.game_ended) {
             this.game_ended = true
-
-            if (condition === "win") {
-                this.win = true
-                this.game_over_info.game_won()
-                playSound(sound_game_won)
-            } else if (condition === "lose") {
-                this.game_over_info.game_lost()
-                playSound(sound_game_lost)
-            }
-
+            
+            this.displayGameOverScreen(condition)
             displayRestartButton()
 
             setTimeout(() => {
                 this.display_endscreen = true
             }, 3000)
+        }
+    }
+
+    displayGameOverScreen(condition) {
+        if (condition === "win") {
+            this.win = true
+            this.game_over_info.game_won()
+            playSound(sound_game_won)
+        } else if (condition === "lose") {
+            this.game_over_info.game_lost()
+            playSound(sound_game_lost)
         }
     }
 
@@ -126,6 +129,7 @@ class World {
             this.checkEnemyCollision()
             this.checkCollectAbleCollision()
             this.checkThrowableObjectCollision()
+            this.character.checkForBottleThrow()
         }, 1000 / 10);
     }
 
@@ -144,35 +148,42 @@ class World {
     checkCollectAbleCollision() {
         this.collectables.forEach((collectable) => {
             if (this.character.isColliding(collectable)) {
-                if (collectable instanceof bottleCollectable) {
-                    if (this.current_bottles < this.max_bottles && !collectable.collected) {
-                        this.pickupBottle(collectable)
-                    }
-                } else if (collectable instanceof coinCollectable) {
-                    if (this.current_coins < this.max_coins && !collectable.collected) {
-                        this.pickupCoin(collectable)
-                    }
-                }
+                this.checkForPickup(collectable)
             }
         })
+    }
+
+    checkForPickup(collectable) {
+        if (collectable instanceof bottleCollectable) {
+            if (this.current_bottles < this.max_bottles && !collectable.collected) {
+                this.pickupBottle(collectable)
+            }
+        } else if (collectable instanceof coinCollectable) {
+            if (this.current_coins < this.max_coins && !collectable.collected) {
+                this.pickupCoin(collectable)
+            }
+        }
     }
 
     checkThrowableObjectCollision() {
         this.throwableObjects.forEach((bottle) => {
             this.enemies.forEach((enemy) => {
                 if (bottle.isColliding(enemy) && !enemy.died) {
-                    if (enemy.health > 0 && bottle.bottle_hit === false) {
-                        enemy.health -= this.bottle_damage
-                        bottle.bottle_hit = true
-
-                        this.checkForEnemyDeath(enemy)
-                        if (enemy instanceof Endboss && this.single_hud_object[0] instanceof BossBar) {
-                            this.single_hud_object[0].updateBossBar(enemy.health)
-                        }
-                    }
+                    this.bottleHit(bottle, enemy)
                 }
             })
         })
+    }
+
+    bottleHit(bottle, enemy) {
+        if (enemy.health > 0 && bottle.bottle_hit === false) {
+            enemy.health -= this.bottle_damage
+            bottle.bottle_hit = true
+            this.checkForEnemyDeath(enemy)
+            if (enemy instanceof Endboss && this.single_hud_object[0] instanceof BossBar) {
+                this.single_hud_object[0].updateBossBar(enemy.health)
+            }
+        }
     }
 
     checkForEnemyDeath(enemy) {
@@ -184,7 +195,6 @@ class World {
                     this.removeBossBar()
                     this.game_over("win")
                 }
-
             }
         }
     }

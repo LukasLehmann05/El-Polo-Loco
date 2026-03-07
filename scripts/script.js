@@ -19,7 +19,6 @@ let sound_game_won = "./sounds/victory_sound.wav"
 let sound_pickup = "./sounds/pickup_sound.wav"
 
 function init() {
-
     canvas.width = canvas_width
     canvas.height = canvas_height
 
@@ -87,6 +86,7 @@ function showFullscreen(event) {
 function displayRestartButton() {
     let restart_button = document.getElementById("restart_button")
     let menu_button = document.getElementById("menu_button")
+    
     if (restart_button.classList.contains("display-block")) {
         restart_button.classList.remove("display-block")
         menu_button.classList.remove("display-block")
@@ -185,20 +185,8 @@ function checkForMobile() {
     }
 }
 
-function mobileLeftStart() {
-    world.controls.handleKey("A", true)
-}
-
-function mobileLeftStop() {
-    world.controls.handleKey("A", false)
-}
-
-function mobileRightStart() {
-    world.controls.handleKey("D", true)
-}
-
-function mobileRightStop() {
-    world.controls.handleKey("D", false)
+function handleMobileControl(key, isPressed) {
+    world.controls.handleKey(key, isPressed)
 }
 
 function disableContext(event) {
