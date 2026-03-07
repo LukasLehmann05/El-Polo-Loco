@@ -5,6 +5,7 @@ class DrawableObject{
     height = 150
     width = 100
     currentImage = 0
+    col_offset_x = 0
 
     imageCache = {}
 
