@@ -10,7 +10,7 @@
     <link rel="shortcut icon" href="./img/enemies/chicken/chicken_small/1_walk/2_w.png" type="image/x-icon">
 </head>
 
-<body onload="init()">
+<body onload="init()" onresize="checkOrientation()">
     <article class="content">
         <header class="title-header">
             <h1>El Pollo Loco</h1>
@@ -18,6 +18,9 @@
 
         <main>
             <div class="game-wrapper" id="game_wrapper">
+                <div class="turn-info" id="turn_info">
+                    <p>Please turn your device to play</p>
+                </div>
                 <canvas class="game-canvas" id="game_canvas"></canvas>
 
                 <div class="controls">

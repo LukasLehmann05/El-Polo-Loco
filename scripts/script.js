@@ -30,6 +30,7 @@ function init() {
     setSoundFromStorage(stored_mute, stored_volume)
 
     checkForMobile()
+    checkOrientation()
 }
 
 function setSoundFromStorage(stored_mute, stored_volume) {
@@ -204,3 +205,16 @@ function disableContext(event) {
     event.stopPropagation()
     event.preventDefault()
 }
+
+function checkOrientation() {
+    if (screen.orientation.angle === 90 || screen.orientation.angle === -90 || window.innerWidth > 600) {
+        document.getElementById("turn_info").style.display = "none"
+    } else if ((screen.orientation.angle === 0 || screen.orientation.angle === 180) && window.innerWidth <= 600) {
+        document.getElementById("turn_info").style.display = "flex"
+    }
+
+}
+
+screen.orientation.addEventListener("change", () => {
+    checkOrientation()
+})
