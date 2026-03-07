@@ -2,6 +2,7 @@ class World {
     game_started = false
     game_ended = false
     display_endscreen = false
+    isPhone = false
     character = new Character()
     drawableObject = new DrawableObject()
     health_bar = new HealthBar()
@@ -83,6 +84,11 @@ class World {
 
     startGame() {
         this.game_started = true
+        if (this.isPhone) {
+            document.querySelectorAll(".mobile-move-buttons").forEach(button => {
+                button.style.display = "block"
+            })
+        }
     }
 
     game_over(condition) {

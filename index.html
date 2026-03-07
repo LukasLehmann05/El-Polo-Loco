@@ -33,19 +33,25 @@
                     </button>
                 </div>
                 <div class="action-buttons">
-                    <button class="restart-button" id="restart_button" onclick="restartGame(event)">
-                        Restart
+                    <button class="mobile-move-buttons" id="move_button_left" onpointerdown="mobileLeftStart()" onpointerup="mobileLeftStop()">
+                        L
                     </button>
-                    <button class="start-button" id="start_button" onclick="loadLevels()">
-                        Start
-                    </button>
-                    <button class="restart-button" id="menu_button" onclick="showMenu(event)">
-                        Menu
+                    <div class="menu-buttons">
+                        <button class="restart-button" id="restart_button" onclick="restartGame(event)">
+                            Restart
+                        </button>
+                        <button class="start-button" id="start_button" onclick="loadLevels()">
+                            Start
+                        </button>
+                        <button class="restart-button" id="menu_button" onclick="showMenu(event)">
+                            Menu
+                        </button>
+                    </div>
+                    <button class="mobile-move-buttons" id="move_button_right" onpointerdown="mobileRightStart()" onpointerup="mobileRightStop()">
+                        R
                     </button>
                 </div>
             </div>
-
-            <p class="start-text">click on the start button above to start</p>
         </main>
 
         <footer class="controls-display">

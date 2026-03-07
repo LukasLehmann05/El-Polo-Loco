@@ -28,6 +28,8 @@ function init() {
     let stored_mute = getFromLocalStorage("mute")
     let stored_volume = getFromLocalStorage("volume")
     setSoundFromStorage(stored_mute, stored_volume)
+
+    checkForMobile()
 }
 
 function setSoundFromStorage(stored_mute, stored_volume) {
@@ -120,7 +122,7 @@ function changeVolume(event) {
     let input_volume = document.getElementById("volume_slider").value
     volume = input_volume / 100
     addToLocalStorage("volume", volume)
-    
+
     if (input_volume == 0) {
         mute = true
         changeMuteIcon()
@@ -168,4 +170,32 @@ function addToLocalStorage(key, value) {
 
 function getFromLocalStorage(key) {
     return localStorage.getItem(key)
+}
+
+function isMobile() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
+function checkForMobile() {
+    if (isMobile()) {
+        world.isPhone = true
+    } else {
+        world.isPhone = false
+    }
+}
+
+function mobileLeftStart() {
+    world.controls.handleKey("A", true)
+}
+
+function mobileLeftStop() {
+    world.controls.handleKey("A", false)
+}
+
+function mobileRightStart() {
+    world.controls.handleKey("D", true)
+}
+
+function mobileRightStop() {
+    world.controls.handleKey("D", false)
 }

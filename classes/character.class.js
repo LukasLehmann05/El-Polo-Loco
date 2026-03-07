@@ -96,7 +96,7 @@ class Character extends Moveable_object {
     animate() {
         setInterval(() => {
             this.selectAnimation()
-        }, 1000 / 20)
+        }, 1000 / 10)
 
         setInterval(() => {
             this.moveCharacter()
