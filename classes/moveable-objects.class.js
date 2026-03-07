@@ -53,7 +53,7 @@ class Moveable_object extends DrawableObject {
     isColliding(objectToCheck) {
         return (this.pos_x - this.col_offset_x) + this.width > objectToCheck.pos_x &&
             this.pos_y + this.height > objectToCheck.pos_y &&
-            (this.pos_x - this.col_offset_x) < objectToCheck.pos_x + objectToCheck.width &&
+            (this.pos_x + this.col_offset_x) < objectToCheck.pos_x + objectToCheck.width &&
             this.pos_y < objectToCheck.pos_y + objectToCheck.height
     }
 }
