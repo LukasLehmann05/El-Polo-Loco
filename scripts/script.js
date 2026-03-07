@@ -199,3 +199,8 @@ function mobileRightStart() {
 function mobileRightStop() {
     world.controls.handleKey("D", false)
 }
+
+function disableContext(event) {
+    event.stopPropagation()
+    event.preventDefault()
+}
