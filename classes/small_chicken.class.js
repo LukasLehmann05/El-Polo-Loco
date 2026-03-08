@@ -36,6 +36,7 @@ class SmallChicken extends Moveable_object {
     }
 
     enemyKilled() {
-        this.speed = 0 
+        this.speed = 0
+        playSound("../sounds/chicken_dead.mp3")
     }
 }
