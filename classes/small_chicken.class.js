@@ -1,3 +1,7 @@
+/**
+ * @file small_chicken.class.js
+ * @description Contains SmallChicken data for the game to be displayed.
+ */
 class SmallChicken extends Moveable_object {
 
     pos_y = 545
@@ -15,6 +19,10 @@ class SmallChicken extends Moveable_object {
 
     dead_image = "../img/enemies/chicken/chicken_small/2_dead/dead.png"
 
+    /**
+     * Class initialization.
+     * @param {*} offset_x
+     */
     constructor(offset_x) {
         super().loadImage("../img/enemies/chicken/chicken_small/1_walk/1_w.png")
         this.pos_x = offset_x + Math.random() * 200
@@ -24,6 +32,9 @@ class SmallChicken extends Moveable_object {
         this.playChickenAnimation()
     }
 
+    /**
+     * Plays the chicken walking animation.
+     */
     playChickenAnimation() {
         this.moveLeft(this.target_fps)
         setInterval(() => {
@@ -35,8 +46,12 @@ class SmallChicken extends Moveable_object {
         }, this.animationFPS)
     }
 
+    /**
+     * Stops the enemy from moving and plays the died animation.
+     */
     enemyKilled() {
         this.speed = 0
+        this.died = true
         playSound("../sounds/chicken_dead.mp3")
     }
 }

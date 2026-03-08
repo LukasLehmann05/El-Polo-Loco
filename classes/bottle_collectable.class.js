@@ -1,3 +1,7 @@
+/**
+ * @file bottle_collectable.class.js
+ * @description Contains bottle collectable data for the game to be displayed.
+ */
 class bottleCollectable extends Moveable_object{
 
     BOTTLE_TYPES = [
@@ -10,11 +14,19 @@ class bottleCollectable extends Moveable_object{
     height = 125
     collected = false
 
+    /**
+     * Class initialization.
+     * @param {number} pos_x x position of the bottle.
+     */
     constructor(pos_x){
         super().loadImage(this.returnRandomBottle())
         this.pos_x = pos_x 
     }
 
+    /**
+     * Returns a random bottle image path.
+     * @returns {string} Path of the bottle image.
+     */
     returnRandomBottle() {
         let randomNumber = Math.random()
         if (randomNumber < 0.5) {
@@ -24,6 +36,9 @@ class bottleCollectable extends Moveable_object{
         }
     }
 
+    /**
+     * Hides the bottle by setting its collected status to true and moving it off-screen.
+     */
     hideBottle() {
         this.collected = true
         this.pos_x = -200

@@ -1,3 +1,7 @@
+/**
+ * @file script.js
+ * @description Contains all basic functions for the game.
+ */
 const canvas_width = 1280
 const canvas_height = 720
 
@@ -18,6 +22,9 @@ let sound_game_lost = "./sounds/lost_sound.wav"
 let sound_game_won = "./sounds/victory_sound.wav"
 let sound_pickup = "./sounds/pickup_sound.wav"
 
+/**
+ * Initializes the game the first time the website is loaded.
+ */
 function init() {
     canvas.width = canvas_width
     canvas.height = canvas_height
@@ -30,6 +37,11 @@ function init() {
     checkOrientation()
 }
 
+/**
+ * Sets the sound settings from the stored values in localStorage.
+ * @param {string} stored_mute defines if sound is muted
+ * @param {number} stored_volume defines the volume level
+ */
 function setSoundFromStorage(stored_mute, stored_volume) {
     if (stored_mute !== null) {
         mute = stored_mute === "true"
@@ -58,6 +70,9 @@ window.addEventListener("keyup", (event) => {
     controls.handleKey(key, false)
 })
 
+/**
+ * Loads all game levels and adds them to the world.
+ */
 function loadLevels() {
     document.getElementById("start_button").style.display = "none"
     if (!game_running) {
@@ -69,6 +84,10 @@ function loadLevels() {
     }
 }
 
+/**
+ * Toggles fullscreen mode.
+ * @param {*} event
+ */
 function showFullscreen(event) {
     event.stopPropagation()
     if (!fullscreen) {
@@ -82,6 +101,9 @@ function showFullscreen(event) {
     }
 }
 
+/**
+ * Toggles the display of the restart and menu buttons.
+ */
 function displayRestartButton() {
     let restart_button = document.getElementById("restart_button")
     let menu_button = document.getElementById("menu_button")
@@ -95,10 +117,17 @@ function displayRestartButton() {
     }
 }
 
+/**
+ * Clears the old world and stops the game.
+ */
 function clearOldWorld() {
     game_running = false
 }
 
+/**
+ * Restarts the game.
+ * @param {*} event
+ */
 function restartGame(event) {
     displayRestartButton()
     event.stopPropagation()
@@ -107,6 +136,10 @@ function restartGame(event) {
     loadLevels()
 }
 
+/**
+ * Shows the main menu.
+ * @param {*} event
+ */
 function showMenu(event) {
     event.stopPropagation()
     displayRestartButton()
@@ -117,6 +150,10 @@ function showMenu(event) {
     clearOldWorld()
 }
 
+/**
+ * Executes changeVolume.
+ * @param {*} event
+ */
 function changeVolume(event) {
     event.stopPropagation()
     let input_volume = document.getElementById("volume_slider").value
@@ -132,6 +169,10 @@ function changeVolume(event) {
     }
 }
 
+/**
+ * Executes playSound.
+ * @param {string} url sound file url to be played
+ */
 function playSound(url) {
     if (!mute) {
         let audio = new Audio(url)
@@ -140,6 +181,10 @@ function playSound(url) {
     }
 }
 
+/**
+ * Toggles the mute state.
+ * @param {*} event
+ */
 function toggleMute(event) {
     event.stopPropagation()
     mute = !mute
@@ -154,12 +199,18 @@ function toggleMute(event) {
     }
 }
 
+/**
+ * Hides the mobile controls.
+ */
 function hideMobileControls() {
     document.querySelectorAll(".mobile-move-buttons").forEach(button => {
         button.style.display = "none"
     })
 }
 
+/**
+ * Changes the mute icon based on the current mute state.
+ */
 function changeMuteIcon() {
     let mute_icon = document.getElementById("mute_icon")
 
@@ -170,18 +221,35 @@ function changeMuteIcon() {
     }
 }
 
+/**
+ * Adds a key-value pair to localStorage.
+ * @param {string} key
+ * @param {string} value
+ */
 function addToLocalStorage(key, value) {
     localStorage.setItem(key, value)
 }
 
+/**
+ * Retrieves a value from localStorage by its key.
+ * @param {string} key
+ * @returns {string} The value associated with the key.
+ */
 function getFromLocalStorage(key) {
     return localStorage.getItem(key)
 }
 
+/**
+ * Checks if the device is a mobile device.
+ * @returns {boolean} True if the device is mobile, false otherwise.
+ */
 function isMobile() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
 }
 
+/**
+ * Checks if the device is mobile and updates the world accordingly.
+ */
 function checkForMobile() {
     if (isMobile()) {
         world.isPhone = true
@@ -190,15 +258,27 @@ function checkForMobile() {
     }
 }
 
+/**
+ * Handles mobile control input.
+ * @param {string} key Control key pressed from mobile input.
+ * @param {boolean} isPressed Whether the key is pressed or not.
+ */
 function handleMobileControl(key, isPressed) {
     world.controls.handleKey(key, isPressed)
 }
 
+/**
+ * Hides the context menu on mobile buttons.
+ * @param {*} event
+ */
 function disableContext(event) {
     event.stopPropagation()
     event.preventDefault()
 }
 
+/**
+ * Alerts the user on small screens to rotate their device.
+ */
 function checkOrientation() {
     if (screen.orientation.angle === 90 || screen.orientation.angle === -90 || window.innerWidth > 600) {
         document.getElementById("turn_info").style.display = "none"

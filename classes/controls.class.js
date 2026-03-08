@@ -1,12 +1,24 @@
+/**
+ * @file controls.class.js
+ * @description Contains control input data for the game to be displayed.
+ */
 class Controls {
     MOVE_LEFT = false
     MOVE_RIGHT = false
     JUMP = false
     THROW = false
 
+    /**
+     * Class initialization.
+     */
     constructor() {
     }
 
+    /**
+     * Handles key input.
+     * @param {string} key The key that was pressed or released.
+     * @param {boolean} pressed Whether the key was pressed (true) or released (false).
+     */
     handleKey(key, pressed) {
         switch (key) {
             case "D":

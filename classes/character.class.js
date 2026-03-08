@@ -1,3 +1,7 @@
+/**
+ * @file character.class.js
+ * @description Contains character data for the game to be displayed.
+ */
 class Character extends Moveable_object {
 
     levels = 2
@@ -83,6 +87,9 @@ class Character extends Moveable_object {
         "../img/pepe/1_idle/long_idle/I-20.png",
     ]
 
+    /**
+     * Class initialization.
+     */
     constructor() {
         super().loadImage("../img/pepe/1_idle/idle/I-1.png")
         this.loadImages(this.WALKING_SEQUENCE)
@@ -94,6 +101,9 @@ class Character extends Moveable_object {
         this.gravity(this)
     }
 
+    /**
+     * Sets an interval to fire functions for animation play check.
+     */
     animate() {
         setInterval(() => {
             this.selectAnimation()
@@ -105,6 +115,9 @@ class Character extends Moveable_object {
         }, 1000 / 60)
     }
 
+    /**
+     * Selects the animation to be played depending on control input.
+     */
     selectAnimation() {
         if (this.world.controls.JUMP && !this.died) {
             this.playAnimation(this.JUMPING_SEQUENCE)
@@ -123,12 +136,18 @@ class Character extends Moveable_object {
         }
     }
 
+    /**
+     * Checks if the players has initialized a bottle throw.
+     */
     checkForBottleThrow() {
         if (this.world.controls.THROW) {
             this.world.throwBottle(this.mirrorImage, this.pos_x, this.pos_y)
         }
     }
 
+    /**
+     * Moves the character based on control input.
+     */
     moveCharacter() {
         if (this.world.controls.MOVE_LEFT && this.pos_x > this.limit_left && !this.died) {
             this.pos_x -= this.speed
@@ -146,6 +165,9 @@ class Character extends Moveable_object {
         this.world.camera_x = -this.pos_x + this.character_offet_right
     }
 
+    /**
+     * Makes the character jump if character is on ground and jump control is fired.
+     */
     jump() {
         if (this.world.controls.JUMP && this.vertical_speed == 0 && this.pos_y == this.character_base_y && !this.died) {
             this.vertical_speed = -this.jump_speed

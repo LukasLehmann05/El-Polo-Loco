@@ -1,3 +1,11 @@
+/**
+ * @file level1.js
+ * @description Provides level1 functionality for the El Polo Loco game.
+ */
+/**
+ * Executes loadLevel1.
+ * @param {*} world
+ */
 function loadLevel1(world) {
     let levelCount = 1
     let levelBeginn = 0

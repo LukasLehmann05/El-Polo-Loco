@@ -1,3 +1,7 @@
+/**
+ * @file endboss.class.js
+ * @description Contains endboss data for the game to be displayed.
+ */
 class Endboss extends Moveable_object {
     pos_y = 170
     height = 500
@@ -22,6 +26,10 @@ class Endboss extends Moveable_object {
 
 
 
+    /**
+     * Class initialization.
+     * @param {number} offset_x The initial x position offset of the endboss.
+     */
     constructor(offset_x) {
         super().loadImage("../img/enemies/boss_chicken/1_walk/G1.png")
         this.pos_x = offset_x + Math.random() * 200
@@ -31,6 +39,9 @@ class Endboss extends Moveable_object {
         this.playEndbossAnimation()
     }
 
+    /**
+     * Plays the endboss walking animation.
+     */
     playEndbossAnimation() {
         this.moveLeft(this.target_fps)
         setInterval(() => {
@@ -40,6 +51,9 @@ class Endboss extends Moveable_object {
         }, this.animationFPS)
     }
 
+    /**
+     * Plays the endboss died animation.
+     */
     playDiedAnimation() {
         let currentImage = 0
         let deadAnim = setInterval(() => {
@@ -53,6 +67,9 @@ class Endboss extends Moveable_object {
         }, this.animationFPS)
     }
 
+    /**
+     * Stops the enemy from moving and plays the died animation.
+     */
     enemyKilled() {
         this.speed = 0
         this.died = true

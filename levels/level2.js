@@ -1,3 +1,11 @@
+/**
+ * @file level2.js
+ * @description Provides level2 functionality for the El Polo Loco game.
+ */
+/**
+ * Executes loadLevel2.
+ * @param {*} world
+ */
 function loadLevel2(world) {
     let levelCount = 2
     let levelBeginn = 2560 * (levelCount - 1)

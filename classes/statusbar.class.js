@@ -1,3 +1,7 @@
+/**
+ * @file statusbar.class.js
+ * @description This class contains the main progressbar handling.
+ */
 class StatusBar extends DrawableObject {
 
     percentage = 100
@@ -12,10 +16,18 @@ class StatusBar extends DrawableObject {
     width = 300
     height = 80
 
+    /**
+     * Class initialization.
+     */
     constructor() {
         super()
     }
 
+    /**
+     * Sets the progress bars percentage and pics a given image.
+     * @param {*} percentage calculated percentage to be displayed.
+     * @param {*} imgArray array of images to be used for the progress bar.
+     */
     setPercentage(percentage, imgArray) {
         this.percentage = percentage
         this.array_index = this.returnImageIndex()
@@ -23,6 +35,10 @@ class StatusBar extends DrawableObject {
         this.img = this.imageCache[path]
     }
 
+    /**
+     * Returns the index of the image to be displayed based on the current percentage.
+     * @return {number} The index of the image to be displayed.
+     */
     returnImageIndex() {
         switch (this.percentage) {
             case 0:

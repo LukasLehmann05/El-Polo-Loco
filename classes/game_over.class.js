@@ -1,3 +1,7 @@
+/**
+ * @file game_over.class.js
+ * @description Handles game over conditions to determine if the game is won or lost.
+ */
 class Game_Over_Info extends DrawableObject {
     pos_x = (1280 - 400) / 2
     pos_y = (720 - 200) / 2
@@ -23,12 +27,18 @@ class Game_Over_Info extends DrawableObject {
     game_won_image
 
 
+    /**
+     * Class initialization.
+     */
     constructor() {
         super()
         this.loadImages(this.lost_images)
         this.loadImages(this.won_images)
     }
 
+    /**
+     * Fires when the game was lost, displays game lost popup.
+     */
     game_lost() {
         this.game_lost_image = this.returnRandomGameOverImage(this.lost_images)
         this.loadImage(this.game_lost_image)
@@ -41,6 +51,9 @@ class Game_Over_Info extends DrawableObject {
         this.showAnimation()
     }
 
+    /**
+     * Fires when game was won, displays game won popup.
+     */
     game_won() {
         this.game_won_image = this.returnRandomGameOverImage(this.won_images)
         this.loadImage(this.game_won_image)
@@ -53,6 +66,9 @@ class Game_Over_Info extends DrawableObject {
         this.showAnimation()
     }
 
+    /**
+     * Displayer the popup animation.
+     */
     showAnimation() {
         setInterval(() => {
             if (this.width < 800) {
@@ -64,6 +80,10 @@ class Game_Over_Info extends DrawableObject {
         }, 1000 / 30);
     }
 
+    /**
+     * return a random game over image.
+     * @param {array} img_array array containing multiple popup images to display from.
+     */
     returnRandomGameOverImage(img_array) {
         const randomIndex = Math.floor(Math.random() * img_array.length)
         return img_array[randomIndex]

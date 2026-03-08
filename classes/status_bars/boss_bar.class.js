@@ -1,3 +1,7 @@
+/**
+ * @file boss_bar.class.js
+ * @description Contains bossbar data for the game to be displayed.
+ */
 class BossBar extends StatusBar {
     pos_x = 490
     max_boss_health = 5
@@ -11,11 +15,18 @@ class BossBar extends StatusBar {
         "../img/status_bars/2_statusbar_endboss/blue/blue100.png",
     ]
 
+    /**
+     * Class initialization.
+     */
     constructor() {
         super().loadImage(this.BOSS_BAR[5])
         this.loadImages(this.BOSS_BAR)
     }
 
+    /**
+     * Updates the boss bar based on the boss's health.
+     * @param {*} bossHealth
+     */
     updateBossBar(bossHealth) {
         this.setPercentage(bossHealth / this.max_boss_health * 100, this.BOSS_BAR)
     }

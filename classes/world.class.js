@@ -1,3 +1,7 @@
+/**
+ * @file world.class.js
+ * @description Contains main game handling and rendering for the game.
+ */
 class World {
     game_started = false
     game_ended = false
@@ -35,6 +39,11 @@ class World {
     current_coins = 0
     bottle_damage = 1
 
+    /**
+     * Initializes a new game world.
+     * @param {*} canvas
+     * @param {*} controls
+     */
     constructor(canvas, controls) {
         this.setWorld()
         this.ctx = canvas.getContext("2d")
@@ -44,6 +53,9 @@ class World {
         this.checkForCollision()
     }
 
+    /**
+     * Adds all game objects.
+     */
     addGameContent() {
         this.addObjectsToMap(this.backgrounds)
         this.addObjectsToMap(this.clouds)
@@ -61,6 +73,9 @@ class World {
         this.ctx.translate(this.camera_x, 0)
     }
 
+    /**
+     * Displays the starter or end screen.
+     */
     displayScreen() {
         if (!this.game_started) {
             this.addToMap(new StartingScreen())
@@ -74,6 +89,9 @@ class World {
         }
     }
 
+    /**
+     * Renders the game world continiously.
+     */
     createWorld() {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
         this.ctx.translate(this.camera_x, 0)
@@ -87,6 +105,9 @@ class World {
         }.bind(this))
     }
 
+    /**
+     * Starts the game, displays mobile buttons.
+     */
     startGame() {
         this.game_started = true
         if (this.isPhone) {
@@ -96,6 +117,10 @@ class World {
         }
     }
 
+    /**
+     * Handles the game over display.
+     * @param {string} condition contains either "win" or "loss"
+     */
     game_over(condition) {
         if (!this.game_ended) {
             this.game_ended = true
@@ -110,6 +135,10 @@ class World {
         }
     }
 
+    /**
+     * Displays the game over screen.
+     * @param {string} condition win or lose condition
+     */
     displayGameOverScreen(condition) {
         if (condition === "win") {
             this.win = true
@@ -121,10 +150,17 @@ class World {
         }
     }
 
+    /**
+     * Adds a single stationary object to the map.
+     * @param {class} object the object to be added.
+     */
     AddSingleObjectToMap(object) {
         this.single_hud_object.push(object)
     }
 
+    /**
+     * Checks all objects for collision.
+     */
     checkForCollision() {
         setInterval(() => {
             this.checkEnemyCollision()
@@ -134,6 +170,9 @@ class World {
         }, 1000 / 10);
     }
 
+    /**
+     * Checks if the enemy collides with a enemy.
+     */
     checkEnemyCollision() {
         this.enemies.forEach((enemy) => {
             if (this.character.isColliding(enemy) && !enemy.died) {
@@ -146,6 +185,9 @@ class World {
         })
     }
 
+    /**
+     * Checks if the player collides with a collectable.
+     */
     checkCollectAbleCollision() {
         this.collectables.forEach((collectable) => {
             if (this.character.isColliding(collectable)) {
@@ -154,6 +196,10 @@ class World {
         })
     }
 
+    /**
+     * Checks if the collectable can be picked up by the player.
+     * @param {class} collectable object that wants to be picked up
+     */
     checkForPickup(collectable) {
         if (collectable instanceof bottleCollectable) {
             if (this.current_bottles < this.max_bottles && !collectable.collected) {
@@ -166,6 +212,9 @@ class World {
         }
     }
 
+    /**
+     * Checks if the bottle collidies with a enemy.
+     */
     checkThrowableObjectCollision() {
         this.throwableObjects.forEach((bottle) => {
             this.enemies.forEach((enemy) => {
@@ -176,6 +225,11 @@ class World {
         })
     }
 
+    /**
+     * Checks if the bottle can kill or damage the enemy.
+     * @param {class} bottle class of the bottle to be checked
+     * @param {class} enemy class of the enemy to be checked
+     */
     bottleHit(bottle, enemy) {
         if (enemy.health > 0 && bottle.bottle_hit === false) {
             enemy.health -= this.bottle_damage
@@ -187,6 +241,10 @@ class World {
         }
     }
 
+    /**
+     * Checks if the enemy has died. Updates bossbar if the enemy is a boss
+     * @param {class} enemy class of the enemy to check
+     */
     checkForEnemyDeath(enemy) {
         if (enemy.health == 0) {
             this.killEnemy(enemy)
@@ -200,31 +258,50 @@ class World {
         }
     }
 
+    /**
+     * Picks up a coin, hides the coin and updates the coin bar.
+     * @param {class} collectable class of the collectable
+     */
     pickupCoin(collectable) {
         collectable.hideCoin()
         this.current_coins += 1
         this.coin_bar.updateCoinBar(this.current_coins)
     }
 
+    /**
+     * Picks up a bottle, hides the bottle and updates the bottle bar.
+     * @param {class} collectable class of the collectable
+     */
     pickupBottle(collectable) {
         collectable.hideBottle()
         this.current_bottles += 1
         this.bottle_bar.updateBottleBar(this.current_bottles)
     }
 
+    /**
+     * Checks if the enemy can be killed.
+     * @param {class} enemy class of the enemy to be jump killed
+     */
     checkForJumpKill(enemy) {
-        if (this.character.vertical_speed > 0 && !enemy.died) { //&& this.character.pos_y < enemy.pos_y
+        if (this.character.vertical_speed > 0 && !enemy.died) {
             this.killEnemy(enemy)
         } else if (!enemy.died) {
             this.damageCharacter()
         }
     }
 
+    /**
+     * Kills the enemy.
+     * @param {class} enemy class of the enemy to kill
+     */
     killEnemy(enemy) {
         enemy.died = true
         enemy.enemyKilled()
     }
 
+    /**
+     * Damages the character.
+     */
     damageCharacter() {
         let new_hit = new Date().getTime()
         let timepassed = (new_hit - this.lastHit) / 1000
@@ -238,6 +315,9 @@ class World {
         this.characterDied()
     }
 
+    /**
+     * Checks if the character has died.
+     */
     characterDied() {
         if (this.drawableObject.health <= 0 && !this.character.died) {
             this.character.died = true
@@ -246,6 +326,9 @@ class World {
         }
     }
 
+    /**
+     * Sets the world for given game objects.
+     */
     setWorld() {
         this.level.world = this
         this.character.world = this
@@ -255,6 +338,10 @@ class World {
         this.character.animate()
     }
 
+    /**
+     * Adds multiple objects to the map.
+     * @param {Array} objects array of objects to be added
+     */
     addObjectsToMap(objects) {
         objects.forEach((object) => {
             this.addToMap(object)
@@ -262,12 +349,21 @@ class World {
 
     }
 
+    /**
+     * Checks if the character is in cooldown.
+     */
     checkForCooldown() {
         let timepassed = new Date().getTime() - this.lastHit
         timepassed = timepassed / 1000
         return timepassed < 0.2
     }
 
+    /**
+     * Throws the bottle and checks if its possible.
+     * @param {boolean} mirrorImage indicates if the bottle moves left or right
+     * @param {number} pos_x the x position to throw the bottle from
+     * @param {number} pos_y the y position to throw the bottle from
+     */
     throwBottle(mirrorImage, pos_x, pos_y) {
         if (!this.throwableObject.checkThrowCooldown() && this.current_bottles > 0) {
             const newBottle = new Throwable_Object()
@@ -279,10 +375,17 @@ class World {
         }
     }
 
+    /**
+     * Removes the boss bar from the HUD.
+     */
     removeBossBar() {
         this.single_hud_object.pop(BossBar)
     }
 
+    /**
+     * Adds a single object to the map.
+     * @param {class} objectToAdd the object to be added to the map
+     */
     addToMap(objectToAdd) {
         if (objectToAdd.visible === false) {
             return
@@ -298,6 +401,11 @@ class World {
         this.ctx.restore()
     }
 
+    /**
+     * Adds a collision box for the given object.
+     * @param {class} objectToAdd the object to add a collision box for
+     * @param {number} drawX the x position to draw the collision box
+     */
     addCollisionBox(objectToAdd, drawX = objectToAdd.pos_x) {
         if (objectToAdd instanceof Character || objectToAdd instanceof Endboss || objectToAdd instanceof Chicken) {
             this.ctx.beginPath()
