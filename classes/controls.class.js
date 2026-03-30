@@ -8,6 +8,8 @@ class Controls {
     JUMP = false
     THROW = false
 
+    canControl = false
+
     /**
      * Class initialization.
      */
@@ -20,19 +22,21 @@ class Controls {
      * @param {boolean} pressed Whether the key was pressed (true) or released (false).
      */
     handleKey(key, pressed) {
-        switch (key) {
-            case "D":
-                this.MOVE_RIGHT = pressed
-                break
-            case "A":
-                this.MOVE_LEFT = pressed
-                break
-            case "SPACE":
-                this.JUMP = pressed
-                break
-            case "F":
-                this.THROW = pressed
-                break
+        if (this.canControl) {
+            switch (key) {
+                case "D":
+                    this.MOVE_RIGHT = pressed
+                    break
+                case "A":
+                    this.MOVE_LEFT = pressed
+                    break
+                case "SPACE":
+                    this.JUMP = pressed
+                    break
+                case "F":
+                    this.THROW = pressed
+                    break
+            }
         }
     }
 }

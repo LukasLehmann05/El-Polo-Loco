@@ -110,6 +110,7 @@ class World {
      */
     startGame() {
         this.game_started = true
+        this.controls.canControl = true
         if (this.isPhone) {
             document.querySelectorAll(".mobile-move-buttons").forEach(button => {
                 button.style.display = "block"
@@ -124,6 +125,7 @@ class World {
     game_over(condition) {
         if (!this.game_ended) {
             this.game_ended = true
+            this.controls.canControl = false
 
             this.displayGameOverScreen(condition)
 
