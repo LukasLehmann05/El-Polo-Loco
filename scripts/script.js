@@ -122,7 +122,6 @@ function displayRestartButton() {
  */
 function clearOldWorld() {
     game_running = false
-    displayRestartButton()
     hideMobileControls()
     world.enemies = []
     world.backgrounds = []
