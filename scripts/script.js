@@ -122,6 +122,12 @@ function displayRestartButton() {
  */
 function clearOldWorld() {
     game_running = false
+    displayRestartButton()
+    hideMobileControls()
+    world.enemies = []
+    world.backgrounds = []
+    world.collectables = []
+    
 }
 
 /**
@@ -132,7 +138,6 @@ function restartGame(event) {
     displayRestartButton()
     event.stopPropagation()
     clearOldWorld()
-    world = new World(canvas, controls, throwableObject)
     loadLevels()
 }
 
