@@ -28,7 +28,6 @@ h1 {
     height: 720px;
     width: 1280px;
     background-color: black;
-    cursor: pointer;
 }
 
 .game-wrapper {
@@ -95,6 +94,7 @@ h1 {
     border-color: rgb(255, 255, 255);
     border-width: 4px;
     background-color: #FFCA1C;
+    cursor: pointer;
 }
 
 .restart-button:hover {
@@ -111,6 +111,7 @@ h1 {
     border-color: rgb(255, 255, 255);
     border-width: 4px;
     background-color: #FFCA1C;
+    cursor: pointer;
 }
 
 .start-button:hover {
@@ -202,6 +203,7 @@ h1 {
     border-color: rgb(255, 255, 255);
     border-width: 4px;
     background-color: #FFCA1C;
+    cursor: pointer;
 }
 
 .mobile-move-buttons:hover {
@@ -227,4 +229,5 @@ h1 {
     z-index: 100;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 }
