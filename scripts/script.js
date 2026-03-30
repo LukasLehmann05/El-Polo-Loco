@@ -126,7 +126,10 @@ function clearOldWorld() {
     world.enemies = []
     world.backgrounds = []
     world.collectables = []
-    
+    world.clouds = []
+    world.single_hud_object = []
+    world.character.pos_x = 120
+    console.log(world);
 }
 
 /**
@@ -136,8 +139,9 @@ function clearOldWorld() {
 function restartGame(event) {
     displayRestartButton()
     event.stopPropagation()
-    clearOldWorld()
     loadLevels()
+    world.game_ended = false
+    world.display_endscreen = false
 }
 
 /**
@@ -151,7 +155,6 @@ function showMenu(event) {
     world.game_started = false
     world.game_ended = false
     world.display_endscreen = false
-    clearOldWorld()
 }
 
 /**
