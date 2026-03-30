@@ -190,7 +190,6 @@ h1 {
     transform: translateX(-50%);
     display: flex;
     justify-content: space-around;
-    min-width: 100dvw;
     gap: 16px;
 }
 

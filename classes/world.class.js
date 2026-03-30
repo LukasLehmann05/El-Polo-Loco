@@ -130,6 +130,7 @@ class World {
             setTimeout(() => {
                 this.display_endscreen = true
                 clearOldWorld()
+                displayRestartButton()
             }, 3000)
         }
     }
