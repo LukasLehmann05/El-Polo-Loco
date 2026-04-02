@@ -126,6 +126,7 @@ class World {
         if (!this.game_ended) {
             this.game_ended = true
             this.controls.canControl = false
+            this.controls.resetControls()
 
             this.displayGameOverScreen(condition)
 

@@ -39,4 +39,11 @@ class Controls {
             }
         }
     }
+
+    resetControls() {
+        this.MOVE_LEFT = false
+        this.MOVE_RIGHT = false
+        this.JUMP = false
+        this.THROW = false
+    }
 }
