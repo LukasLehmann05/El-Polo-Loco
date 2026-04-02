@@ -212,6 +212,15 @@ h1 {
     color: rgb(255, 255, 255);
 }
 
+.control-img {
+    padding: 4px;
+}
+
+.control-img img {
+    width: 30px;
+    height: 30px;
+}
+
 .menu-buttons {
     display: flex;
     justify-content: center;

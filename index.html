@@ -36,7 +36,14 @@
                     </button>
                 </div>
                 <div class="action-buttons">
-                    <button class="mobile-move-buttons" id="move_button_left" onpointerdown="handleMobileControl('A', true)" onpointerup="handleMobileControl('A', false)" oncontextmenu="disableContext(event)">
+                    <button class="mobile-move-buttons control-img" id="move_button_jump"
+                        onpointerdown="handleMobileControl('F', true)"
+                        onpointerup="handleMobileControl('F', false)" oncontextmenu="disableContext(event)">
+                        <img src="./img/controls/bottle_control.png" alt="Throw">
+                    </button>
+                    <button class="mobile-move-buttons" id="move_button_left"
+                        onpointerdown="handleMobileControl('A', true)" onpointerup="handleMobileControl('A', false)"
+                        oncontextmenu="disableContext(event)">
                         L
                     </button>
                     <div class="menu-buttons">
@@ -50,8 +57,15 @@
                             Menu
                         </button>
                     </div>
-                    <button class="mobile-move-buttons" id="move_button_right" onpointerdown="handleMobileControl('D', true)" onpointerup="handleMobileControl('D', false)" oncontextmenu="disableContext(event)">
+                    <button class="mobile-move-buttons" id="move_button_right"
+                        onpointerdown="handleMobileControl('D', true)" onpointerup="handleMobileControl('D', false)"
+                        oncontextmenu="disableContext(event)">
                         R
+                    </button>
+                    <button class="mobile-move-buttons control-img" id="move_button_jump"
+                        onpointerdown="handleMobileControl('SPACE', true)"
+                        onpointerup="handleMobileControl('SPACE', false)" oncontextmenu="disableContext(event)">
+                        <img src="./img/controls/jumping.png" alt="Jump">
                     </button>
                 </div>
             </div>
