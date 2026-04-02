@@ -3,6 +3,10 @@
     src: url(../fonts/Archivo-VariableFont_wdth\,wght.ttf);
 }
 
+* {
+    text-decoration: none;
+}
+
 body {
     font-family: "Archivo", sans-serif;
     background-image: url(../img/background/webpage_background.jpg);
@@ -11,4 +15,81 @@ body {
     color: white;
     margin: 0px;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 40px;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+    max-width: 800px;
+    width: 90%;
+    margin-top: 20px;
+}
+
+.attribution-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+
+.attribution-section a {
+    color: rgb(235, 145, 11);
+    font-size: 20px;
+}
+
+.attribution-section a:hover {
+    color: rgb(255, 175, 0);
+    text-decoration: underline;
+}
+
+aside {
+    margin-top: 40px;
+}
+
+.no-attribution-required {
+    display: flex;
+    text-align: center;
+}
+
+footer {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 40px;
+    width: 90%;
+    max-width: 800px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+nav a {
+    color: rgb(235, 145, 11);
+    font-size: 18px;
+}
+
+nav a:hover {
+    color: rgb(255, 175, 0);
+    text-decoration: underline;
 }
