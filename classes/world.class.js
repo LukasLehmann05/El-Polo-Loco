@@ -239,6 +239,7 @@ class World {
             this.checkForEnemyDeath(enemy)
             if (enemy instanceof Endboss && this.single_hud_object[0] instanceof BossBar) {
                 this.single_hud_object[0].updateBossBar(enemy.health)
+                playSound("../sounds/endboss_hurt.wav")
             }
         }
     }
