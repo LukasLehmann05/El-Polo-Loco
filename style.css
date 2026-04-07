@@ -190,7 +190,12 @@ h1 {
     left: 50%;
     transform: translateX(-50%);
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    gap: 30dvw;
+}
+
+.action-button-group-container {
+    display: flex;
     gap: 16px;
 }
 
