@@ -1,0 +1,31 @@
+@media (max-width: 430px) {
+    tr {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    td {
+        padding-top: 8px;
+    }
+
+    .impressum-content {
+        width: auto;
+    }
+
+    .contact-info-right {
+        padding-left: 0px;
+    }
+}
+
+@media (max-width: 340px) {
+    .impressum-content {
+        padding: 10px;
+    }
+}
+
+@media (max-height: 540px) {
+    .impressum-content {
+        margin-top: 16px;
+    }
+}

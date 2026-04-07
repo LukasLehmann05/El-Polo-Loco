@@ -5,6 +5,7 @@
 
 * {
     text-decoration: none;
+    margin: 0px
 }
 
 body {
@@ -13,7 +14,6 @@ body {
     background-size: cover;
     background-position: center;
     color: white;
-    margin: 0px;
     min-height: 100vh;
     font-size: 20px;
 }
@@ -37,6 +37,7 @@ body {
     flex-direction: column;
     align-items: center;
     gap: 10px;
+    margin-top: 24px;
 }
 
 footer {
@@ -56,7 +57,7 @@ footer a:hover {
 }
 
 .contact-info-right {
-    padding: 16px;
+    padding-left: 16px;
 }
 
 .contact-info-right a {
@@ -65,4 +66,9 @@ footer a:hover {
 
 .contact-info-right a:hover {
     text-decoration: underline;
+}
+
+h2 {
+    font-size: 40px;
+    margin: 12px 0px;
 }
