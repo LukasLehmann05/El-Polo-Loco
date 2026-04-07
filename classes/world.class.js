@@ -401,22 +401,6 @@ class World {
         }
         const drawX = objectToAdd.mirrorImage ? 0 : objectToAdd.pos_x
         this.ctx.drawImage(objectToAdd.img, drawX, objectToAdd.pos_y, objectToAdd.width, objectToAdd.height)
-        this.addCollisionBox(objectToAdd, drawX)
         this.ctx.restore()
-    }
-
-    /**
-     * Adds a collision box for the given object.
-     * @param {class} objectToAdd the object to add a collision box for
-     * @param {number} drawX the x position to draw the collision box
-     */
-    addCollisionBox(objectToAdd, drawX = objectToAdd.pos_x) {
-        if (objectToAdd instanceof Character || objectToAdd instanceof Endboss || objectToAdd instanceof Chicken) {
-            this.ctx.beginPath()
-            this.ctx.lineWidth = "1"
-            this.ctx.strokeStyle = "red"
-            this.ctx.rect(drawX, objectToAdd.pos_y, objectToAdd.width, objectToAdd.height)
-            this.ctx.stroke()
-        }
     }
 }
