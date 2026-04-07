@@ -22,6 +22,8 @@ let sound_game_lost = "./sounds/lost_sound.wav"
 let sound_game_won = "./sounds/victory_sound.wav"
 let sound_pickup = "./sounds/pickup_sound.wav"
 
+let allAudioElements = [] // Array to keep track of all audio elements for volume control
+
 /**
  * Initializes the game the first time the website is loaded.
  */
@@ -82,6 +84,7 @@ function loadLevels() {
         loadLevel2(world)
         game_running = true
     }
+    playSound("./sounds/background_music.mp3")
 }
 
 /**
@@ -174,6 +177,13 @@ function changeVolume(event) {
         mute = false
         changeMuteIcon()
     }
+    changeVolumeForPlayingSounds()
+}
+
+function changeVolumeForPlayingSounds() {
+    allAudioElements.forEach(audio => {
+        audio.volume = volume
+    })
 }
 
 /**
@@ -185,6 +195,7 @@ function playSound(url) {
         let audio = new Audio(url)
         audio.volume = volume
         audio.play()
+        allAudioElements.push(audio)
     }
 }
 
