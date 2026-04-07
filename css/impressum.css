@@ -47,12 +47,11 @@ footer {
 }
 
 footer a {
-    color: rgb(235, 145, 11);
+    color: rgb(255, 175, 0);
     font-size: 18px;
 }
 
 footer a:hover {
-    color: rgb(255, 175, 0);
     text-decoration: underline;
 }
 
