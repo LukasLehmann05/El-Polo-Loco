@@ -8,6 +8,9 @@ const canvas_height = 720
 let canvas = document.getElementById("game_canvas")
 let game_wrapper = document.getElementById("game_wrapper")
 let fullscreen_icon = document.getElementById("fullscreen_icon")
+let instruction_dialog = document.getElementById("instruction_dialog")
+let instructions_button = document.getElementById("instructions_button")
+let instructions_close_button = document.getElementById("instructions_close_button")
 let fullscreen = false
 let world
 let game_running = false
@@ -309,3 +312,11 @@ function checkOrientation() {
 screen.orientation.addEventListener("change", () => {
     checkOrientation()
 })
+
+function showInstructions() {
+    instruction_dialog.showModal()
+}
+
+function hideInstructions() {
+    instruction_dialog.close()
+}

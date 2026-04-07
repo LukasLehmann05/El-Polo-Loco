@@ -7,6 +7,7 @@
     <title>El Pollo Loco</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./css/instruction-dialog.css">
     <link rel="shortcut icon" href="./img/enemies/chicken/chicken_small/1_walk/2_w.png" type="image/x-icon">
 </head>
 
@@ -58,6 +59,9 @@
                         <button class="restart-button" id="menu_button" onclick="showMenu(event)">
                             Menu
                         </button>
+                        <button class="start-button" id="instructions_button" onclick="showInstructions()">
+                            Help
+                        </button>
                     </div>
                     <div class="action-button-group-container">
                         <button class="mobile-move-buttons" id="move_button_right"
@@ -76,15 +80,6 @@
         </main>
 
         <footer class="controls-display">
-            <h2 class="controls-title">controls</h2>
-            <div class="controls-description">
-                <p>A - Move Left</p>
-                <p>D - Move Right</p>
-                <p>W - Jump</p>
-                <p>F - Throw</p>
-                <p>Space - Jump</p>
-            </div>
-
             <details class="game-story">
                 <summary>Story</summary>
                 <p class="story-content">Pepe was on a journey to save his village from the evil chicken lord. On his
@@ -98,6 +93,81 @@
             </aside>
         </footer>
     </article>
+
+    <dialog class="instruction-dialog" id="instruction_dialog">
+        <header>
+            <h2>Instructions</h2>
+            <button id="instructions_close_button" onclick="hideInstructions()">X</button>
+        </header>
+
+        <main>
+            <section>
+                <h3>
+                    Controls
+                </h3>
+                <table>
+                    <tr>
+                        <td>A</td>
+                        <td>Move Left</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td>Move Right</td>
+                    </tr>
+                    <tr>
+                        <td>Space</td>
+                        <td>Jump</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td>Throw</td>
+                    </tr>
+                </table>
+            </section>
+            <section>
+                <h3>
+                    How to play?
+                </h3>
+                <section>
+                    <h4>
+                        Basic progression:
+                    </h4>
+                    <ul>
+                        <li>Kill enemies by either throwing bottles or jumping on them</li>
+                        <li>You start with 5 bottles, more can be picked up in the game</li>
+                        <li>Each time a enemy hits you, you lose health</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>
+                        How to win?
+                    </h4>
+                    <ul>
+                        <li>All enemies must be defeated</li>
+                        <li>The boss must be defeated</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>
+                        When do i lose?
+                    </h4>
+                    <ul>
+                        <li>If your health drops to 0</li>
+                        <li>You do not manage to defeat all enemies before they leave the map</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>
+                        Other important info:
+                    </h4>
+                    <ul>
+                        <li>Coins currently do not serve a purpose in the game</li>
+                        <li>Try to "jump-kill" as many enemies as possible as bottles are rare</li>
+                    </ul>
+                </section>
+            </section>
+        </main>
+    </dialog>
 </body>
 
 <script src="./classes/world.class.js"></script>
