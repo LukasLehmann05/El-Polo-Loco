@@ -5,6 +5,7 @@
 
 * {
     text-decoration: none;
+    margin: 0px;
 }
 
 body {
@@ -18,26 +19,22 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    font-size: 20px;
 }
 
 header {
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
-    border-radius: 10px;
     text-align: center;
-    margin-top: 40px;
 }
 
 main {
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
-    border-radius: 10px;
     max-width: 800px;
     width: 90%;
-    margin-top: 20px;
+    margin-top: 12px;
 }
 
 .attribution-section {
@@ -59,20 +56,18 @@ main {
 }
 
 aside {
-    margin-top: 40px;
-}
-
-.no-attribution-required {
+    margin-top: 28px;
     display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    gap: 20px;
 }
 
 footer {
-    background-color: rgba(0, 0, 0, 0.5);
     padding: 10px 20px;
-    border-radius: 10px;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 20px;
     width: 90%;
     max-width: 800px;
 }
@@ -81,7 +76,6 @@ nav {
     display: flex;
     gap: 20px;
     justify-content: center;
-    margin-top: 10px;
 }
 
 nav a {
@@ -92,4 +86,16 @@ nav a {
 nav a:hover {
     color: rgb(255, 175, 0);
     text-decoration: underline;
+}
+
+.legal-notice-background {
+    background-color: rgba(0, 0, 0, 0.5);
+    margin-top: 40px;
+    border-radius: 20px;
+}
+
+h1 {
+    font-size: 44px;
+    margin-top: 10px;
+    margin-bottom: 20px
 }
