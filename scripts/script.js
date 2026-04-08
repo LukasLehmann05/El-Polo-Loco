@@ -323,3 +323,16 @@ function showInstructions() {
 function hideInstructions() {
     instruction_dialog.close()
 }
+
+instruction_dialog.addEventListener("click", (event) => {
+    let dialog_dimensions = instruction_dialog.getBoundingClientRect()
+    let clicked_inside_dialog =
+        event.clientX >= dialog_dimensions.left &&
+        event.clientX <= dialog_dimensions.right &&
+        event.clientY >= dialog_dimensions.top &&
+        event.clientY <= dialog_dimensions.bottom
+
+    if (!clicked_inside_dialog) {
+        instruction_dialog.close()
+    }
+})
