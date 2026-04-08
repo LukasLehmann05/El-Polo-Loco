@@ -7,7 +7,7 @@
     <title>El Pollo Loco</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./css/responsive.css">
-    <link rel="stylesheet" href="./css/instruction-dialog.css">
+    <link rel="stylesheet" href="./css/instruction_dialog.css">
     <link rel="shortcut icon" href="./img/enemies/chicken/chicken_small/1_walk/2_w.png" type="image/x-icon">
 </head>
 
@@ -95,72 +95,72 @@
     </article>
 
     <dialog class="instruction-dialog" id="instruction_dialog">
-        <header>
-            <h2>Instructions</h2>
-            <button id="instructions_close_button" onclick="hideInstructions()">X</button>
+        <header class="dialog-header">
+            <h2 class="instructions-title">Instructions</h2>
+            <button class="instructions_close_button" id="instructions_close_button" onclick="hideInstructions()">X</button>
         </header>
 
         <main>
             <section>
-                <h3>
+                <h3 class="instruction-dialog-main-sections-title">
                     Controls
                 </h3>
-                <table>
+                <table class="controls-table">
                     <tr>
                         <td>A</td>
-                        <td>Move Left</td>
+                        <td class="controls-td-right">Move Left</td>
                     </tr>
                     <tr>
                         <td>D</td>
-                        <td>Move Right</td>
+                        <td class="controls-td-right">Move Right</td>
                     </tr>
                     <tr>
                         <td>Space</td>
-                        <td>Jump</td>
+                        <td class="controls-td-right">Jump</td>
                     </tr>
                     <tr>
                         <td>F</td>
-                        <td>Throw</td>
+                        <td class="controls-td-right">Throw</td>
                     </tr>
                 </table>
             </section>
             <section>
-                <h3>
+                <h3 class="instruction-dialog-main-sections-title">
                     How to play?
                 </h3>
                 <section>
-                    <h4>
+                    <h4 class="instruction-dialog-side-sections-title">
                         Basic progression:
                     </h4>
-                    <ul>
+                    <ul class="instruction-info-list">
                         <li>Kill enemies by either throwing bottles or jumping on them</li>
                         <li>You start with 5 bottles, more can be picked up in the game</li>
                         <li>Each time a enemy hits you, you lose health</li>
                     </ul>
                 </section>
                 <section>
-                    <h4>
+                    <h4 class="instruction-dialog-side-sections-title">
                         How to win?
                     </h4>
-                    <ul>
+                    <ul class="instruction-info-list">
                         <li>All enemies must be defeated</li>
                         <li>The boss must be defeated</li>
                     </ul>
                 </section>
                 <section>
-                    <h4>
+                    <h4 class="instruction-dialog-side-sections-title">
                         When do i lose?
                     </h4>
-                    <ul>
+                    <ul class="instruction-info-list">
                         <li>If your health drops to 0</li>
                         <li>You do not manage to defeat all enemies before they leave the map</li>
                     </ul>
                 </section>
                 <section>
-                    <h4>
+                    <h4 class="instruction-dialog-side-sections-title">
                         Other important info:
                     </h4>
-                    <ul>
+                    <ul class="instruction-info-list">
                         <li>Coins currently do not serve a purpose in the game</li>
                         <li>Try to "jump-kill" as many enemies as possible as bottles are rare</li>
                     </ul>
