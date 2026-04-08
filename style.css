@@ -174,7 +174,7 @@ h1 {
     transform: translateX(-50%);
     display: flex;
     justify-content: space-between;
-    gap: 30dvw;
+    width: 95%;
 }
 
 .action-button-group-container {
