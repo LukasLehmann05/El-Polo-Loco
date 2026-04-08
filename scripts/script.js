@@ -161,6 +161,7 @@ function showMenu(event) {
     event.stopPropagation()
     displayRestartButton()
     document.getElementById("start_button").style.display = "block"
+    instructions_button.style.display = "block"
     world.game_started = false
     world.game_ended = false
     world.display_endscreen = false
