@@ -25,8 +25,8 @@ class Chicken extends Moveable_object {
      */
     constructor(offset_x) {
         super().loadImage("../img/enemies/chicken/chicken_normal/1_walk/1_w.png")
-        this.pos_x = offset_x + Math.random() * 200
-        this.speed = 2 + Math.random() * 0.35
+        this.pos_x = offset_x + Math.random() * 500
+        this.speed = 2 + Math.random() * 0.4
         this.loadImages([this.dead_image])
         this.loadImages(this.WALKING_SEQUENCE)
         this.playChickenAnimation()

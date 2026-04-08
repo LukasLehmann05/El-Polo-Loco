@@ -6,20 +6,15 @@
  * Executes loadLevel2.
  * @param {*} world
  */
-function loadLevel2(world) {
-    let levelCount = 2
+function loadLevel3(world) {
+    let levelCount = 3
     let levelBeginn = 2560 * (levelCount - 1)
     let level = new Level()
     level.loadLevelData(world,
 
     [
         new Chicken(levelBeginn + 200),
-        new Chicken(levelBeginn + 400),
-        new Chicken(levelBeginn + 600),
-        new SmallChicken(levelBeginn + 800),
-        new SmallChicken(levelBeginn + 1600),
-        new Chicken(levelBeginn + 2000),
-        new Chicken(levelBeginn + 2200),
+        new Endboss(levelBeginn + 600)
     ],
 
     [
@@ -41,7 +36,7 @@ function loadLevel2(world) {
         new bottleCollectable(levelBeginn + 400),
         new bottleCollectable(levelBeginn + 800),
         new bottleCollectable(levelBeginn + 1200),
-        new coinCollectable(levelBeginn + 300),
+        new coinCollectable(levelBeginn + 700),
         new coinCollectable(levelBeginn + 1300),
         new coinCollectable(levelBeginn + 2100),
     ]

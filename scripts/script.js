@@ -88,6 +88,7 @@ function loadLevels() {
         world.startGame()
         loadLevel1(world)
         loadLevel2(world)
+        loadLevel3(world)
         game_running = true
     }
     playSound("./sounds/background_music.mp3")
@@ -138,7 +139,6 @@ function clearOldWorld() {
     world.clouds = []
     world.single_hud_object = []
     world.character.pos_x = 120
-    console.log(world);
 }
 
 /**

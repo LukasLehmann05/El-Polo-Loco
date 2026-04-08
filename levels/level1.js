@@ -14,6 +14,10 @@ function loadLevel1(world) {
 
     [
         new SmallChicken(600),
+        new SmallChicken(900),
+        new SmallChicken(1200),
+        new Chicken(1600),
+        new Chicken(1800),
     ],
 
     [
