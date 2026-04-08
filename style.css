@@ -34,7 +34,8 @@ h1 {
     position: relative;
     width: 1280px;
     height: 720px;
-    background-color: rgb(110, 79, 53);
+    background: #946a07;
+    background: linear-gradient(0deg, rgba(148, 106, 7, 1) 0%, rgba(235, 173, 16, 1) 26%, rgba(212, 160, 4, 1) 75%, rgba(250, 207, 77, 1) 100%);
 }
 
 .start-text {
