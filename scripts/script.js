@@ -11,6 +11,8 @@ let fullscreen_icon = document.getElementById("fullscreen_icon")
 let instruction_dialog = document.getElementById("instruction_dialog")
 let instructions_button = document.getElementById("instructions_button")
 let instructions_close_button = document.getElementById("instructions_close_button")
+let restart_button = document.getElementById("restart_button")
+let menu_button = document.getElementById("menu_button")
 let fullscreen = false
 let world
 let game_running = false
@@ -80,6 +82,7 @@ window.addEventListener("keyup", (event) => {
  */
 function loadLevels() {
     document.getElementById("start_button").style.display = "none"
+    instructions_button.style.display = "none"
     if (!game_running) {
         checkForMobile()
         world.startGame()
@@ -111,15 +114,15 @@ function showFullscreen(event) {
  * Toggles the display of the restart and menu buttons.
  */
 function displayRestartButton() {
-    let restart_button = document.getElementById("restart_button")
-    let menu_button = document.getElementById("menu_button")
-
     if (restart_button.classList.contains("display-block")) {
         restart_button.classList.remove("display-block")
         menu_button.classList.remove("display-block")
+        instructions_button.style.display = "none"
     } else {
         restart_button.classList.add("display-block")
         menu_button.classList.add("display-block")
+        instructions_button.style.display = "block"
+
     }
 }
 
