@@ -21,6 +21,7 @@ class Character extends Moveable_object {
     vertical_speed = 0
 
     last_move = new Date().getTime()
+    is_jumping = false
 
     died = false
 
@@ -115,18 +116,38 @@ class Character extends Moveable_object {
         }, 1000 / 60)
     }
 
+    playSingleAnimation(animation_sequence) {
+        console.log("A1");
+        
+        this.is_jumping = true
+        let currentImage = 0
+        let animLenght = animation_sequence.length
+
+        let singleAnim = setInterval(() => {
+            let path = animation_sequence[currentImage]
+            this.img = this.imageCache[path]
+            currentImage++
+            if (currentImage >= animLenght) {
+                clearInterval(singleAnim)
+                this.is_jumping = false
+            }
+        }, 1000 / 13)
+    }
+
     /**
      * Selects the animation to be played depending on control input.
      */
     selectAnimation() {
-        if (this.world.controls.JUMP && !this.died) {
-            this.playAnimation(this.JUMPING_SEQUENCE)
+        if (this.world.controls.JUMP && !this.died || this.is_jumping) {
+            if (!this.is_jumping) {
+                this.playSingleAnimation(this.JUMPING_SEQUENCE)
+            }
             this.last_move = new Date().getTime()
+        } else if (this.died) {
+            this.playAnimation(this.DIED_SEQUENCE)
         } else if (this.world.controls.MOVE_LEFT || this.world.controls.MOVE_RIGHT && !this.died) {
             this.playAnimation(this.WALKING_SEQUENCE)
             this.last_move = new Date().getTime()
-        } else if (this.died && !this.died) {
-            this.playAnimation(this.DIED_SEQUENCE)
         } else if (this.world.checkForCooldown() && !this.died) {
             this.playAnimation(this.HURT_SEQUENCE)
         } else if (new Date().getTime() - this.last_move > 15000 && !this.died) {
