@@ -8,7 +8,7 @@ class Character extends Moveable_object {
 
     height = 400
     width = 250
-    col_offset_x = 120
+    col_offset_x = 100
     pos_y = 260
     speed = 10
     character_offet_right = 200
