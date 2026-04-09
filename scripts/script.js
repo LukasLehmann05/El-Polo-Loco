@@ -13,6 +13,8 @@ let instructions_button = document.getElementById("instructions_button")
 let instructions_close_button = document.getElementById("instructions_close_button")
 let restart_button = document.getElementById("restart_button")
 let menu_button = document.getElementById("menu_button")
+let legal_notice_dialog = document.getElementById("legal_notice_dialog")
+
 let fullscreen = false
 let world
 let game_running = false
@@ -323,6 +325,14 @@ function showInstructions() {
 
 function hideInstructions() {
     instruction_dialog.close()
+}
+
+function showLegalNotice() {
+    legal_notice_dialog.showModal()
+}
+
+function hideLegalNotice() {
+    legal_notice_dialog.close()
 }
 
 instruction_dialog.addEventListener("click", (event) => {

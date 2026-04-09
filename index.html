@@ -88,17 +88,15 @@
                     on. </p>
             </details>
 
-            <aside class="legal-links">
-                <a href="./html/impressum.html" target="_blank">Impressum</a>
-                <a href="./html/legal_notice.html" target="_blank">Legal notice</a>
-            </aside>
+            <button onclick="showLegalNotice()">Legal Notice</button>
         </footer>
     </article>
 
     <dialog class="instruction-dialog" id="instruction_dialog">
         <header class="dialog-header">
             <h2 class="instructions-title">Instructions</h2>
-            <button class="instructions_close_button" id="instructions_close_button" onclick="hideInstructions()">X</button>
+            <button class="instructions_close_button" id="instructions_close_button"
+                onclick="hideInstructions()">X</button>
         </header>
 
         <main>
@@ -166,6 +164,59 @@
                         <li>Try to "jump-kill" as many enemies as possible as bottles are rare</li>
                     </ul>
                 </section>
+            </section>
+        </main>
+    </dialog>
+
+    <dialog class="legal-notice-dialog" id="legal_notice_dialog">
+        <header>
+            <h2>Legal notice</h2>
+            <button onclick="hideLegalNotice()">X</button>
+        </header>
+
+        <main>
+            <section>
+                <h3>Contact:</h3>
+
+                <p>
+                    Lukas Lehmann
+                </p>
+                <p>
+                    Hübnerstraße 16
+                </p>
+                <p>
+                    01187 Dresden
+                </p>
+
+                <table>
+                    <tr>
+                        <td>Telefon:</td>
+                        <td><a href="tel:017663782510">017663782510</a></td>
+                    </tr>
+                    <tr>
+                        <td>E-Mail:</td>
+                        <td><a href="mailto:lukaslehmann05@gmail.com">lukaslehmann05@gmail.com</a></td>
+                    </tr>
+                </table>
+            </section>
+
+            <section>
+                <h3>Copyright:</h3>
+                <div>
+                    <a href="https://www.flaticon.com/free-icons/no-sound" title="no sound icons">No sound icons
+                        by
+                        apien</a>
+                    <a href="https://www.flaticon.com/free-icons/jumping" title="jumping icons">Jumping icons by
+                        Freepik
+                    </a>
+                    <a href="https://www.flaticon.com/free-icons/riot" title="riot icons">Riot icons by
+                        Smashicons -
+                    </a>
+                </div>
+                <p class="no-attribution-required">
+                    Please note that some content might not be listed here, as it is not required to be listed according
+                    to the license of the content.
+                </p>
             </section>
         </main>
     </dialog>
