@@ -36,7 +36,6 @@ class Endboss extends Moveable_object {
         this.speed = 2 + Math.random() * 0.35
         this.loadImages(this.WALKING_SEQUENCE)
         this.loadImages(this.DIED_SEQUENCE)
-        this.playEndbossAnimation()
     }
 
     /**
@@ -75,5 +74,9 @@ class Endboss extends Moveable_object {
         this.died = true
         this.playDiedAnimation()
         playSound("../sounds/chicken_dead.mp3")
+    }
+
+    endbossTriggered() {
+        this.playEndbossAnimation()
     }
 }

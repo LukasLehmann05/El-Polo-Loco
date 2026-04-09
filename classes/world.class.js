@@ -131,13 +131,13 @@ class World {
             this.game_ended = true
             this.controls.canControl = false
             this.controls.resetControls()
-            resetAdditionalAudioElements()
             this.displayGameOverScreen(condition)
 
             setTimeout(() => {
                 this.display_endscreen = true
                 clearOldWorld()
                 displayRestartButton()
+                resetAdditionalAudioElements()
             }, 3000)
         }
     }
