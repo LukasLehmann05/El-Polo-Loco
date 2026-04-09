@@ -43,13 +43,8 @@ function loadLevel1(world) {
         new bottleCollectable(levelBeginn + 400),
         new bottleCollectable(levelBeginn + 800),
         new bottleCollectable(levelBeginn + 1200),
-        new coinCollectable(levelBeginn + 300),
-        new coinCollectable(levelBeginn + 500),
         new coinCollectable(levelBeginn + 700),
-        new coinCollectable(levelBeginn + 900),
         new coinCollectable(levelBeginn + 1100),
-        new coinCollectable(levelBeginn + 1300),
-        new coinCollectable(levelBeginn + 1700),
         new coinCollectable(levelBeginn + 2100),
     ]
     )

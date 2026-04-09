@@ -111,6 +111,10 @@ class World {
     startGame() {
         this.game_started = true
         this.controls.canControl = true
+        this.character.died = false
+        this.current_bottles = this.max_bottles
+        this.current_coins = 0
+        this.resetStatusBars()
         if (this.isPhone) {
             document.querySelectorAll(".mobile-move-buttons").forEach(button => {
                 button.style.display = "block"
@@ -403,4 +407,11 @@ class World {
         this.ctx.drawImage(objectToAdd.img, drawX, objectToAdd.pos_y, objectToAdd.width, objectToAdd.height)
         this.ctx.restore()
     }
+
+    resetStatusBars() {
+        this.health_bar.updateHealthBar(this.drawableObject.health)
+        this.bottle_bar.updateBottleBar(this.current_bottles)
+        this.coin_bar.updateCoinBar(this.current_coins)
+    }
 }
+
