@@ -160,7 +160,9 @@ class Character extends Moveable_object {
         if (this.pos_x > 5200 && this.world.boss_bar === false) {
             this.world.boss_bar = true
             this.world.AddSingleObjectToMap(new BossBar())
-            this.world.enemies.find(enemy => enemy instanceof Endboss).endbossTriggered();
+            let endboss = this.world.enemies.find(enemy => enemy instanceof Endboss)
+            endboss.world = this.world
+            endboss.endbossTriggered()
         }
 
         this.world.camera_x = -this.pos_x + this.character_offet_right

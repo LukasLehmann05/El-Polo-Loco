@@ -6,10 +6,12 @@ class Endboss extends Moveable_object {
     pos_y = 170
     height = 500
     width = 350
-    target_fps = 1000/60
+    target_fps = 1000 / 60
     health = 5
     died = false
     playedAnimation = false
+    world = undefined
+    mirrorImage = false
 
     WALKING_SEQUENCE = [
         "../img/enemies/boss_chicken/1_walk/G1.png",
@@ -38,11 +40,23 @@ class Endboss extends Moveable_object {
         this.loadImages(this.DIED_SEQUENCE)
     }
 
+    moveEndboss(target_fps) {
+        setInterval(() => {
+            if (this.world.character.pos_x < this.pos_x) {
+                this.mirrorImage = false
+                this.pos_x -= this.speed
+            } else {
+                this.mirrorImage = true
+                this.pos_x += this.speed
+            }
+        }, target_fps)
+    }
+
     /**
      * Plays the endboss walking animation.
      */
     playEndbossAnimation() {
-        this.moveLeft(this.target_fps)
+        this.moveEndboss(this.target_fps)
         setInterval(() => {
             if (!this.died) {
                 this.playAnimation(this.WALKING_SEQUENCE)
