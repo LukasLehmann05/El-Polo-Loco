@@ -8,7 +8,7 @@ class Character extends Moveable_object {
 
     height = 400
     width = 250
-    col_offset_x = 50
+    col_offset_x = 120
     pos_y = 260
     speed = 10
     character_offet_right = 200
@@ -116,9 +116,11 @@ class Character extends Moveable_object {
         }, 1000 / 60)
     }
 
+    /**
+     * Loops through a single animation sequence.
+     * @param {Array<string>} animation_sequence sequence contains all image paths of the animation.
+     */
     playSingleAnimation(animation_sequence) {
-        console.log("A1");
-        
         this.is_jumping = true
         let currentImage = 0
         let animLenght = animation_sequence.length
