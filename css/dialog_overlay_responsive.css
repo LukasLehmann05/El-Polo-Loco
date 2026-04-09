@@ -1,0 +1,32 @@
+@media (max-width: 500px) {
+    .dialog-overlay {
+        width: 85%;
+    }
+}
+
+@media (max-width: 450px) {
+    .dialog-contact-table tr {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .dialog-table-right {
+        padding-left: 0px;
+        margin: 8px 0px;
+    }
+}
+
+@media (max-width: 400px) {
+    .dialog-title {
+        font-size: 32px;
+    }
+
+    .dialog-main-sections-title {
+        font-size: 26px;
+    }
+
+
+    .instruction-dialog-side-sections-title {
+        font-size: 22px;
+    }
+}

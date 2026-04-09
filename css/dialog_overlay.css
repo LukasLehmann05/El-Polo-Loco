@@ -1,4 +1,4 @@
-.instruction-dialog {
+.dialog-overlay {
     border-radius: 28px;
     border: 4px solid white;
     background-color: rgb(64, 164, 197);
@@ -16,7 +16,7 @@
     align-items: center;
 }
 
-.instructions_close_button {
+.dialog-close-button {
     height: 36px;
     width: 36px;
     color: white;
@@ -27,16 +27,16 @@
     font-size: 24px;
 }
 
-.instructions_close_button:hover {
+.dialog-close-button:hover {
     background-color: rgb(255, 0, 0);
 }
 
-.instructions-title {
+.dialog-title {
     font-size: 40px;
     margin: 16px 0px;
 }
 
-.instruction-dialog-main-sections-title {
+.dialog-main-sections-title {
     font-size: 30px;
     margin: 12px 0px;
     text-decoration: underline;
@@ -58,4 +58,27 @@
 .instruction-info-list li{
     font-size: 18px;
     margin-bottom: 8px;
+}
+
+.legal-notice-main {
+    font-size: 20px;
+}
+
+.legal-notice-main p {
+    margin: 8px 0px;
+}
+
+.legal-notice-main a {
+    color: white;
+    text-decoration: underline;
+}
+
+.dialog-table-right {
+    padding-left: 20px;
+}
+
+.legal-notice-copyright-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }

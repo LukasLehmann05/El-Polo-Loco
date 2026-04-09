@@ -7,8 +7,8 @@
     <title>El Pollo Loco</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="./css/responsive.css">
-    <link rel="stylesheet" href="./css/instruction_dialog.css">
-    <link rel="stylesheet" href="./css/instruction_dialog_responsive.css">
+    <link rel="stylesheet" href="./css/dialog_overlay.css">
+    <link rel="stylesheet" href="./css/dialog_overlay_responsive.css">
     <link rel="shortcut icon" href="./img/enemies/chicken/chicken_small/1_walk/2_w.png" type="image/x-icon">
 </head>
 
@@ -88,20 +88,19 @@
                     on. </p>
             </details>
 
-            <button onclick="showLegalNotice()">Legal Notice</button>
+            <button class="legal-notice-button" onclick="showLegalNotice()">Legal Notice</button>
         </footer>
     </article>
 
-    <dialog class="instruction-dialog" id="instruction_dialog">
+    <dialog class="dialog-overlay" id="instruction_dialog">
         <header class="dialog-header">
-            <h2 class="instructions-title">Instructions</h2>
-            <button class="instructions_close_button" id="instructions_close_button"
-                onclick="hideInstructions()">X</button>
+            <h2 class="dialog-title">Instructions</h2>
+            <button class="dialog-close-button" id="instructions_close_button" onclick="hideInstructions()">X</button>
         </header>
 
         <main>
             <section>
-                <h3 class="instruction-dialog-main-sections-title">
+                <h3 class="dialog-main-sections-title">
                     Controls
                 </h3>
                 <table class="controls-table">
@@ -124,7 +123,7 @@
                 </table>
             </section>
             <section>
-                <h3 class="instruction-dialog-main-sections-title">
+                <h3 class="dialog-main-sections-title">
                     How to play?
                 </h3>
                 <section>
@@ -168,16 +167,15 @@
         </main>
     </dialog>
 
-    <dialog class="legal-notice-dialog" id="legal_notice_dialog">
-        <header>
-            <h2>Legal notice</h2>
-            <button onclick="hideLegalNotice()">X</button>
+    <dialog class="dialog-overlay" id="legal_notice_dialog">
+        <header class="dialog-header">
+            <h2 class="dialog-title">Legal notice</h2>
+            <button class="dialog-close-button" id="legal_notice_close_button" onclick="hideLegalNotice()">X</button>
         </header>
 
-        <main>
+        <main class="legal-notice-main">
             <section>
-                <h3>Contact:</h3>
-
+                <h3 class="dialog-main-sections-title">Contact:</h3>
                 <p>
                     Lukas Lehmann
                 </p>
@@ -187,31 +185,27 @@
                 <p>
                     01187 Dresden
                 </p>
-
-                <table>
+                <table class="dialog-contact-table">
                     <tr>
                         <td>Telefon:</td>
-                        <td><a href="tel:017663782510">017663782510</a></td>
+                        <td class="dialog-table-right"><a href="tel:017663782510">017663782510</a></td>
                     </tr>
                     <tr>
                         <td>E-Mail:</td>
-                        <td><a href="mailto:lukaslehmann05@gmail.com">lukaslehmann05@gmail.com</a></td>
+                        <td class="dialog-table-right"><a
+                                href="mailto:lukaslehmann05@gmail.com">lukaslehmann05@gmail.com</a></td>
                     </tr>
                 </table>
             </section>
 
             <section>
-                <h3>Copyright:</h3>
-                <div>
-                    <a href="https://www.flaticon.com/free-icons/no-sound" title="no sound icons">No sound icons
-                        by
+                <h3 class="dialog-main-sections-title">Copyright:</h3>
+                <div class="legal-notice-copyright-content">
+                    <a href="https://www.flaticon.com/free-icons/no-sound" title="no sound icons">No sound icons by
                         apien</a>
                     <a href="https://www.flaticon.com/free-icons/jumping" title="jumping icons">Jumping icons by
-                        Freepik
-                    </a>
-                    <a href="https://www.flaticon.com/free-icons/riot" title="riot icons">Riot icons by
-                        Smashicons -
-                    </a>
+                        Freepik</a>
+                    <a href="https://www.flaticon.com/free-icons/riot" title="riot icons">Riot icons by Smashicons</a>
                 </div>
                 <p class="no-attribution-required">
                     Please note that some content might not be listed here, as it is not required to be listed according
