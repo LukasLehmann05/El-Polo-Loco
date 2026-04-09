@@ -243,6 +243,7 @@ h1 {
     width: 80%;
     max-width: 600px;
     font-size: 20px !important;
+    justify-self: center;
 }
 
 .story-summary {

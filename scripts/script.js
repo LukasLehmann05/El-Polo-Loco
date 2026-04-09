@@ -189,9 +189,17 @@ function changeVolume(event) {
     changeVolumeForPlayingSounds()
 }
 
+/**
+ * Loops through all audio elements and updates their volume and mute state.
+ */
 function changeVolumeForPlayingSounds() {
     allAudioElements.forEach(audio => {
         audio.volume = volume
+        if (mute) {
+            audio.muted = true
+        } else {
+            audio.muted = false
+        }
     })
 }
 
@@ -224,6 +232,8 @@ function toggleMute(event) {
         document.getElementById("volume_slider").value = 25
         changeVolume(event)
     }
+
+    changeVolumeForPlayingSounds()
 }
 
 /**
