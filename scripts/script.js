@@ -203,6 +203,13 @@ function changeVolumeForPlayingSounds() {
     })
 }
 
+function resetAdditionalAudioElements() {
+    allAudioElements.forEach(audio => {
+        audio.pause()
+    })
+    allAudioElements = []
+}
+
 /**
  * Executes playSound.
  * @param {string} url sound file url to be played

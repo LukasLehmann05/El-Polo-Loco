@@ -131,7 +131,7 @@ class World {
             this.game_ended = true
             this.controls.canControl = false
             this.controls.resetControls()
-
+            resetAdditionalAudioElements()
             this.displayGameOverScreen(condition)
 
             setTimeout(() => {
@@ -209,13 +209,9 @@ class World {
      */
     checkForPickup(collectable) {
         if (collectable instanceof bottleCollectable) {
-            if (this.current_bottles < this.max_bottles && !collectable.collected) {
-                this.pickupBottle(collectable)
-            }
+            this.pickupBottle(collectable)
         } else if (collectable instanceof coinCollectable) {
-            if (this.current_coins < this.max_coins && !collectable.collected) {
-                this.pickupCoin(collectable)
-            }
+            this.pickupCoin(collectable)
         }
     }
 
@@ -272,8 +268,10 @@ class World {
      */
     pickupCoin(collectable) {
         collectable.hideCoin()
-        this.current_coins += 1
-        this.coin_bar.updateCoinBar(this.current_coins)
+        if (this.current_coins < this.max_coins) {
+            this.current_coins += 1
+            this.coin_bar.updateCoinBar(this.current_coins)
+        }
     }
 
     /**
@@ -282,8 +280,10 @@ class World {
      */
     pickupBottle(collectable) {
         collectable.hideBottle()
-        this.current_bottles += 1
-        this.bottle_bar.updateBottleBar(this.current_bottles)
+        if (this.current_bottles < this.max_bottles) {
+            this.current_bottles += 1
+            this.bottle_bar.updateBottleBar(this.current_bottles)
+        }
     }
 
     /**
