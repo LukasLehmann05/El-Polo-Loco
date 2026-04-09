@@ -112,6 +112,7 @@ class World {
         this.game_started = true
         this.controls.canControl = true
         this.character.died = false
+        this.drawableObject.health = 100
         this.current_bottles = this.max_bottles
         this.current_coins = 0
         this.resetStatusBars()
@@ -408,10 +409,12 @@ class World {
         this.ctx.restore()
     }
 
+    /**
+    * Resets the status bars in the HUD.
+    */
     resetStatusBars() {
         this.health_bar.updateHealthBar(this.drawableObject.health)
         this.bottle_bar.updateBottleBar(this.current_bottles)
         this.coin_bar.updateCoinBar(this.current_coins)
     }
 }
-
