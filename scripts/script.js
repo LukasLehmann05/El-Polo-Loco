@@ -17,6 +17,7 @@ let legal_notice_dialog = document.getElementById("legal_notice_dialog")
 let story_dialog = document.getElementById("story_dialog")
 let story_button = document.getElementById("story_button")
 let legal_notice_button = document.getElementById("legal_notice_button")
+let start_button = document.getElementById("start_button")
 
 let fullscreen = false
 let world
@@ -86,10 +87,7 @@ window.addEventListener("keyup", (event) => {
  * Loads all game levels and adds them to the world.
  */
 function loadLevels() {
-    document.getElementById("start_button").style.display = "none"
-    instructions_button.style.display = "none"
-    story_button.style.display = "none"
-    legal_notice_button.style.display = "none"
+    toggleMenuButtons(false, [start_button, instructions_button, story_button, legal_notice_button])
     if (!game_running) {
         checkForMobile()
         world.startGame()
@@ -99,6 +97,16 @@ function loadLevels() {
         game_running = true
     }
     playSound("./sounds/background_music.mp3")
+}
+
+function toggleMenuButtons(state, buttons) {
+    buttons.forEach(button => {
+        if (state === true) {
+            button.style.display = "block"
+        } else if (state === false) {
+            button.style.display = "none"
+        }
+    })
 }
 
 /**
@@ -115,25 +123,6 @@ function showFullscreen(event) {
         document.exitFullscreen()
         fullscreen = false
         fullscreen_icon.src = "./img/controls/open_fullscreen.png"
-    }
-}
-
-/**
- * Toggles the display of the restart and menu buttons.
- */
-function displayRestartButton() {
-    if (restart_button.classList.contains("display-block")) {
-        restart_button.classList.remove("display-block")
-        menu_button.classList.remove("display-block")
-        instructions_button.style.display = "none"
-        story_button.style.display = "none"
-        legal_notice_button.style.display = "none"
-    } else {
-        restart_button.classList.add("display-block")
-        menu_button.classList.add("display-block")
-        instructions_button.style.display = "block"
-        story_button.style.display = "block"
-        legal_notice_button.style.display = "block"
     }
 }
 
@@ -156,7 +145,7 @@ function clearOldWorld() {
  * @param {*} event
  */
 function restartGame(event) {
-    displayRestartButton()
+    displayRestartButton(false, [start_button, instructions_button, story_button, legal_notice_button])
     event.stopPropagation()
     loadLevels()
     world.game_ended = false
@@ -169,11 +158,7 @@ function restartGame(event) {
  */
 function showMenu(event) {
     event.stopPropagation()
-    displayRestartButton()
-    document.getElementById("start_button").style.display = "block"
-    instructions_button.style.display = "block"
-    story_button.style.display = "block"
-    legal_notice_button.style.display = "block"
+    toggleMenuButtons(true, [start_button, instructions_button, story_button, legal_notice_button])
     world.game_started = false
     world.game_ended = false
     world.display_endscreen = false

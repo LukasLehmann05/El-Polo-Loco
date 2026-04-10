@@ -3,6 +3,9 @@
  * @description Contains main game handling and rendering for the game.
  */
 class World {
+    restart_button = document.getElementById("restart_button")
+    menu_button = document.getElementById("menu_button")
+
     game_started = false
     game_ended = false
     display_endscreen = false
@@ -138,7 +141,7 @@ class World {
             setTimeout(() => {
                 this.display_endscreen = true
                 clearOldWorld()
-                displayRestartButton()
+                toggleMenuButtons(true, [this.menu_button, this.restart_button])
                 resetAdditionalAudioElements()
             }, 3000)
         }

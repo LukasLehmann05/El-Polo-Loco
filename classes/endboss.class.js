@@ -26,6 +26,23 @@ class Endboss extends Moveable_object {
         "../img/enemies/boss_chicken/5_dead/G26.png",
     ]
 
+    HURT_SEQUENCE = [
+        "../img/enemies/boss_chicken/4_hurt/G21.png",
+        "../img/enemies/boss_chicken/4_hurt/G22.png",
+        "../img/enemies/boss_chicken/4_hurt/G23.png",
+    ]
+
+    ALERT_SEQUENCE = [
+        "../img/enemies/boss_chicken/2_alert/G5.png",
+        "../img/enemies/boss_chicken/2_alert/G6.png",
+        "../img/enemies/boss_chicken/2_alert/G7.png",
+        "../img/enemies/boss_chicken/2_alert/G8.png",
+        "../img/enemies/boss_chicken/2_alert/G9.png",
+        "../img/enemies/boss_chicken/2_alert/G10.png",
+        "../img/enemies/boss_chicken/2_alert/G11.png",
+        "../img/enemies/boss_chicken/2_alert/G12.png",
+    ]
+
 
 
     /**
@@ -38,6 +55,8 @@ class Endboss extends Moveable_object {
         this.speed = 2 + Math.random() * 0.35
         this.loadImages(this.WALKING_SEQUENCE)
         this.loadImages(this.DIED_SEQUENCE)
+        this.loadImages(this.HURT_SEQUENCE)
+        this.loadImages(this.ALERT_SEQUENCE)
     }
 
     moveEndboss(target_fps) {
