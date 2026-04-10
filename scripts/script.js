@@ -346,28 +346,12 @@ screen.orientation.addEventListener("change", () => {
     checkOrientation()
 })
 
-function showInstructions() {
-    instruction_dialog.showModal()
+function openOverlay(overlay) {
+    overlay.showModal()
 }
 
-function hideInstructions() {
-    instruction_dialog.close()
-}
-
-function showLegalNotice() {
-    legal_notice_dialog.showModal()
-}
-
-function hideLegalNotice() {
-    legal_notice_dialog.close()
-}
-
-function showStory() {
-    story_dialog.showModal()
-}
-
-function hideStory() {
-    story_dialog.close()
+function closeOverlay(overlay) {
+    overlay.close()
 }
 
 instruction_dialog.addEventListener("click", (event) => {

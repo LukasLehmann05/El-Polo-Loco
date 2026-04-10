@@ -60,13 +60,13 @@
                         <button class="restart-button" id="menu_button" onclick="showMenu(event)">
                             Menu
                         </button>
-                        <button class="start-button" id="instructions_button" onclick="showInstructions()">
+                        <button class="start-button" id="instructions_button" onclick="openOverlay(instruction_dialog)">
                             Help
                         </button>
-                        <button class="start-button" id="story_button" onclick="showStory()">
+                        <button class="start-button" id="story_button" onclick="openOverlay(story_dialog)">
                             Story
                         </button>
-                        <button class="start-button" id="legal_notice_button" onclick="showLegalNotice()">
+                        <button class="start-button" id="legal_notice_button" onclick="openOverlay(legal_notice_dialog)">
                             Legal notice
                         </button>
                     </div>
@@ -90,7 +90,7 @@
     <dialog class="dialog-overlay" id="instruction_dialog">
         <header class="dialog-header">
             <h2 class="dialog-title">Instructions</h2>
-            <button class="dialog-close-button" id="instructions_close_button" onclick="hideInstructions()">X</button>
+            <button class="dialog-close-button" id="instructions_close_button" onclick="closeOverlay(instruction_dialog)">X</button>
         </header>
 
         <main>
@@ -165,7 +165,7 @@
     <dialog class="dialog-overlay" id="legal_notice_dialog">
         <header class="dialog-header">
             <h2 class="dialog-title">Legal notice</h2>
-            <button class="dialog-close-button" id="legal_notice_close_button" onclick="hideLegalNotice()">X</button>
+            <button class="dialog-close-button" id="legal_notice_close_button" onclick="closeOverlay(legal_notice_dialog)">X</button>
         </header>
 
         <main class="legal-notice-main">
@@ -213,7 +213,7 @@
     <dialog class="dialog-overlay" id="story_dialog">
         <header class="dialog-header">
             <h2 class="dialog-title">Story</h2>
-            <button class="dialog-close-button" id="story_close_button" onclick="hideStory()">X</button>
+            <button class="dialog-close-button" id="story_close_button" onclick="closeOverlay(story_dialog)">X</button>
         </header>
 
         <main class="legal-notice-main">
