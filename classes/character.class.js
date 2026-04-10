@@ -128,12 +128,12 @@ class Character extends Moveable_object {
         let singleAnim = setInterval(() => {
             let path = animation_sequence[currentImage]
             this.img = this.imageCache[path]
-            currentImage++
+            currentImage++     
             if (currentImage >= animLenght) {
                 clearInterval(singleAnim)
                 this.is_jumping = false
             }
-        }, 1000 / 13)
+        }, 1000 / 9)
     }
 
     /**

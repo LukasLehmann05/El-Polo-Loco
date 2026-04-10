@@ -115,6 +115,7 @@ class World {
         this.drawableObject.health = 100
         this.current_bottles = this.max_bottles
         this.current_coins = 0
+        this.boss_bar = false
         this.resetStatusBars()
         if (this.isPhone) {
             document.querySelectorAll(".mobile-move-buttons").forEach(button => {
