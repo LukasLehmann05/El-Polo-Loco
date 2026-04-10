@@ -63,6 +63,12 @@
                         <button class="start-button" id="instructions_button" onclick="showInstructions()">
                             Help
                         </button>
+                        <button class="start-button" id="story_button" onclick="showStory()">
+                            Story
+                        </button>
+                        <button class="start-button" id="legal_notice_button" onclick="showLegalNotice()">
+                            Legal notice
+                        </button>
                     </div>
                     <div class="action-button-group-container">
                         <button class="mobile-move-buttons" id="move_button_right"
@@ -79,17 +85,6 @@
                 </div>
             </div>
         </main>
-
-        <footer class="controls-display">
-            <details class="game-story">
-                <summary class="story-summary">Story</summary>
-                <p class="story-content">Pepe was on a journey to save his village from the evil chicken lord. On his
-                    path he encountered numerous challenges and enemies, but with courage and determination, he pressed
-                    on. </p>
-            </details>
-
-            <button class="legal-notice-button" onclick="showLegalNotice()">Legal Notice</button>
-        </footer>
     </article>
 
     <dialog class="dialog-overlay" id="instruction_dialog">
@@ -212,6 +207,21 @@
                     to the license of the content.
                 </p>
             </section>
+        </main>
+    </dialog>
+
+    <dialog class="dialog-overlay" id="story_dialog">
+        <header class="dialog-header">
+            <h2 class="dialog-title">Story</h2>
+            <button class="dialog-close-button" id="story_close_button" onclick="hideStory()">X</button>
+        </header>
+
+        <main class="legal-notice-main">
+            <p>
+                Pepe was on a journey to save his village from the evil chicken lord. On his
+                path he encountered numerous challenges and enemies, but with courage and determination, he pressed
+                on.
+            </p>
         </main>
     </dialog>
 </body>

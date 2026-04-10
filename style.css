@@ -81,11 +81,6 @@ h1 {
     justify-content: center;
 }
 
-.controls-display p {
-    margin: 12px 0px;
-    font-size: 22px;
-}
-
 .restart-button {
     display: none;
     padding: 12px 28px;
@@ -119,13 +114,6 @@ h1 {
     background-color: #b3742c;
     border-color: rgb(240, 240, 240);
     color: rgb(255, 255, 255);
-}
-
-.controls-display {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 64px;
 }
 
 .display-block {
@@ -228,45 +216,4 @@ h1 {
     justify-content: center;
     align-items: center;
     cursor: pointer;
-}
-
-.game-story {
-    font-size: 32px;
-    background-color: rgba(0, 0, 0, 0.4);
-    padding: 16px 40px;
-    border-radius: 10px;
-    margin-top: 32px;
-    text-align: center;
-}
-
-.story-content {
-    width: 80%;
-    max-width: 600px;
-    font-size: 20px !important;
-    justify-self: center;
-}
-
-.story-summary {
-    text-align: center;
-    cursor: pointer;
-}
-
-.legal-notice-button {
-    font-size: 24px;
-    padding: 16px 26px;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.4);
-    border-radius: 10px;
-    border: none;
-    margin-top: 32px;
-    color: white;
-}
-
-.legal-notice-button:hover {
-    background-color: rgba(0, 0, 0, 0.7);
-    text-decoration: underline;
-}
-
-.game-story:open {
-    padding: 16px;
 }

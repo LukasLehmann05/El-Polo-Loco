@@ -14,6 +14,9 @@ let instructions_close_button = document.getElementById("instructions_close_butt
 let restart_button = document.getElementById("restart_button")
 let menu_button = document.getElementById("menu_button")
 let legal_notice_dialog = document.getElementById("legal_notice_dialog")
+let story_dialog = document.getElementById("story_dialog")
+let story_button = document.getElementById("story_button")
+let legal_notice_button = document.getElementById("legal_notice_button")
 
 let fullscreen = false
 let world
@@ -85,6 +88,8 @@ window.addEventListener("keyup", (event) => {
 function loadLevels() {
     document.getElementById("start_button").style.display = "none"
     instructions_button.style.display = "none"
+    story_button.style.display = "none"
+    legal_notice_button.style.display = "none"
     if (!game_running) {
         checkForMobile()
         world.startGame()
@@ -121,11 +126,14 @@ function displayRestartButton() {
         restart_button.classList.remove("display-block")
         menu_button.classList.remove("display-block")
         instructions_button.style.display = "none"
+        story_button.style.display = "none"
+        legal_notice_button.style.display = "none"
     } else {
         restart_button.classList.add("display-block")
         menu_button.classList.add("display-block")
         instructions_button.style.display = "block"
-
+        story_button.style.display = "block"
+        legal_notice_button.style.display = "block"
     }
 }
 
@@ -164,6 +172,8 @@ function showMenu(event) {
     displayRestartButton()
     document.getElementById("start_button").style.display = "block"
     instructions_button.style.display = "block"
+    story_button.style.display = "block"
+    legal_notice_button.style.display = "block"
     world.game_started = false
     world.game_ended = false
     world.display_endscreen = false
@@ -350,6 +360,14 @@ function showLegalNotice() {
 
 function hideLegalNotice() {
     legal_notice_dialog.close()
+}
+
+function showStory() {
+    story_dialog.showModal()
+}
+
+function hideStory() {
+    story_dialog.close()
 }
 
 instruction_dialog.addEventListener("click", (event) => {
