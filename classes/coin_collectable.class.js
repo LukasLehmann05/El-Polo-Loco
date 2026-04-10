@@ -7,6 +7,7 @@ class coinCollectable extends Moveable_object {
     width = 175
     height = 175
     collected = false
+    col_offset_y = 60
 
     coin_image = "img/coin/coin_1.png"
 

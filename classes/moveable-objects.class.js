@@ -77,9 +77,9 @@ class Moveable_object extends DrawableObject {
       * @returns {boolean} true if colliding, false if not.
      */
     isColliding(objectToCheck) {
-        return (this.pos_x - this.col_offset_x) + this.width > objectToCheck.pos_x &&
-            this.pos_y + this.height > objectToCheck.pos_y &&
-            (this.pos_x + this.col_offset_x) < objectToCheck.pos_x + objectToCheck.width &&
-            this.pos_y < objectToCheck.pos_y + objectToCheck.height
+        return (this.pos_x - this.col_offset_x) + this.width > (objectToCheck.pos_x + objectToCheck.col_offset_x) &&
+            (this.pos_y - this.col_offset_y) + this.height > (objectToCheck.pos_y + objectToCheck.col_offset_y) &&
+            (this.pos_x + this.col_offset_x) < (objectToCheck.pos_x - objectToCheck.col_offset_x) + objectToCheck.width &&
+            (this.pos_y + this.col_offset_y) < (objectToCheck.pos_y - objectToCheck.col_offset_y) + objectToCheck.height
     }
 }
